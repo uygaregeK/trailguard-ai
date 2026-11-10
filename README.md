@@ -3,9 +3,9 @@
 **Course:** AIC 390 Prompt Engineering  
 **Use Case:** UC1 — Online Store Support Agent (Target Niche: *TrailRun TR*, Boutique Trail Running & Outdoor Gear Online Store)  
 **Team Members & Roles:**
-- **Uygar Ege Kocakır** — Agent and Tools Lead (`task_success`, `steps_per_task`, `cost_per_task_usd`)
-- **Dilara Yıldız** — Data and Retrieval Lead (`hit_at_5`, `mrr`, `unsupported_claims`)
-- **Arda Agovic** — Evaluation and Safety Lead (`e2e_accuracy`, `abstention_correct`, `injection_success`, `pass_k`)
+- **Uygar Ege Kocakır** — Agent and tools lead (`task_success`, `cost_per_task_usd`, `latency_p50_s`, `spend_week_usd`, `spend_total_usd`)
+- **Dilara Yıldız** — Data and retrieval lead (`hit_at_5`, `mrr`, `unsupported_claims`)
+- **Arda Agovic** — Evaluation and safety lead (`test_set_size`, `e2e_accuracy`, `abstention_correct`, `pass_k`, `injection_success`)
 
 ---
 
@@ -25,6 +25,9 @@ cp .env.example .env
 
 # 4. Run Week 1 Baseline across temperatures 0, 0.7, and 1.2 (W1.5 & W1.6)
 python3 eval/run_w1_baseline.py
+
+# 5. Deterministically recompute scoreboard & token/cost metrics from saved outputs
+python3 eval/run_w1_baseline.py --recompute
 ```
 
 ---

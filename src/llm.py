@@ -15,27 +15,30 @@ except ImportError:
                 os.environ.setdefault(k.strip(), v.strip())
 
 # Official Google AI Studio Paid-Tier Pricing (USD per 1,000,000 tokens)
+# Source: https://ai.google.dev/gemini-api/docs/pricing (Retrieved: 2026-11-10)
 MODEL_PRICING_PER_1M_USD = {
     "gemini-2.5-flash": {"input": 0.30, "output": 2.50},
     "gemini-3.1-flash-lite": {"input": 0.25, "output": 1.50},
-    "gemini-3.5-flash": {"input": 0.25, "output": 1.50},
     "gemini-2.5-flash-lite": {"input": 0.10, "output": 0.40},
+    "gemini-3.5-flash": {"input": 1.50, "output": 9.00},
 }
 
-DEFAULT_PRICING = {"input": 0.30, "output": 2.50}
-FALLBACK_MODELS = ["gemini-2.5-flash", "gemini-3.1-flash-lite", "gemini-3.5-flash"]
+DEFAULT_MODEL = "gemini-2.5-flash"
+FALLBACK_MODELS = ["gemini-2.5-flash", "gemini-3.1-flash-lite"]
 
 
 def get_model_pricing(model_name: str) -> dict:
     """Return official (input, output) USD price per 1M tokens for the given model."""
-    return MODEL_PRICING_PER_1M_USD.get(model_name, DEFAULT_PRICING)
+    return MODEL_PRICING_PER_1M_USD.get(
+        model_name, MODEL_PRICING_PER_1M_USD[DEFAULT_MODEL]
+    )
 
 
 def compute_cost_usd(
     input_tokens: int,
     output_tokens: int,
     thinking_tokens: int = 0,
-    model_name: str = "gemini-2.5-flash",
+    model_name: str = DEFAULT_MODEL,
 ) -> float:
     """Compute exact USD cost using Module 1 formula:
     (n_in * c_in + (n_out + n_think) * c_out) / 1,000,000
@@ -54,7 +57,9 @@ def call_llm(
     model: str | None = None,
     allow_fallback: bool = True,
 ) -> dict:
-    """Call Google Gemini API with thinking_budget=0, exact token accounting, and rate-limit handling."""
+    """Call Google Gemini API (primary: gemini-2.5-flash with thinking_budget=0;
+    fallback on Free Tier 20 RPD quota exhaustion: gemini-3.1-flash-lite).
+    """
     from google import genai
     from google.genai import types
     from google.genai.errors import APIError
@@ -65,9 +70,11 @@ def call_llm(
             "GEMINI_API_KEY is not set. Copy .env.example to .env and add your Google AI Studio key."
         )
 
-    primary_model = model or os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    primary_model = model or os.getenv("GEMINI_MODEL", DEFAULT_MODEL)
     if allow_fallback:
-        candidates = [primary_model] + [m for m in FALLBACK_MODELS if m != primary_model]
+        candidates = [primary_model] + [
+            m for m in FALLBACK_MODELS if m != primary_model
+        ]
     else:
         candidates = [primary_model]
 
@@ -80,14 +87,16 @@ def call_llm(
     )
 
     last_err = None
-    for attempt in range(3):
+    for attempt in range(4):
         for candidate_model in candidates:
             config_kwargs = {
                 "system_instruction": system_prompt,
                 "temperature": temperature,
             }
             if "2.5" in candidate_model:
-                config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_budget=0)
+                config_kwargs["thinking_config"] = types.ThinkingConfig(
+                    thinking_budget=0
+                )
 
             try:
                 t0 = time.perf_counter()
@@ -101,15 +110,16 @@ def call_llm(
                 usage = response.usage_metadata
                 input_tokens = int(getattr(usage, "prompt_token_count", 0) or 0)
                 output_tokens = int(getattr(usage, "candidates_token_count", 0) or 0)
-                thinking_tokens = int(getattr(usage, "thoughts_token_count", 0) or 0)
                 total_tokens = int(
                     getattr(
-                        usage,
-                        "total_token_count",
-                        input_tokens + output_tokens + thinking_tokens,
+                        usage, "total_token_count", input_tokens + output_tokens
                     )
                     or 0
                 )
+                explicit_think = int(getattr(usage, "thoughts_token_count", 0) or 0)
+                inferred_think = max(0, total_tokens - input_tokens - output_tokens)
+                thinking_tokens = max(explicit_think, inferred_think)
+                total_tokens = input_tokens + output_tokens + thinking_tokens
 
                 cost_usd = compute_cost_usd(
                     input_tokens=input_tokens,
@@ -134,6 +144,6 @@ def call_llm(
                 if err.code in (429, 503):
                     continue
                 raise
-        time.sleep(5 * (attempt + 1))
+        time.sleep(4 * (attempt + 1))
 
-    raise RuntimeError(f"Gemini API rate-limited across candidate models: {last_err}")
+    raise RuntimeError(f"Gemini API call failed across candidate models: {last_err}")

@@ -1,8 +1,9 @@
 """Week 1 Baseline Evaluation Script (Deliverables W1.5 & W1.6).
 
 Runs prompts/v1_baseline.txt across all 25 inputs in data/w1_inputs.jsonl at
-temperatures T in {0.0, 0.7, 1.2}, or recomputes summary metrics directly from
-existing data/w1_baseline_outputs.json (--recompute), and writes:
+temperatures T in {0.0, 0.7, 1.2} on a single locked model (gemini-3.1-flash-lite),
+or recomputes summary metrics directly from existing data/w1_baseline_outputs.json
+(--recompute), and writes:
   - data/w1_baseline_outputs.json
   - reports/scoreboard_w1.json
 """
@@ -13,12 +14,18 @@ import json
 import re
 import statistics
 import sys
+import time
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT_DIR))
 
-from src.llm import MODEL_PRICING_PER_1M_USD, call_llm, compute_cost_usd
+from src.llm import (
+    DEFAULT_MODEL,
+    MODEL_PRICING_PER_1M_USD,
+    call_llm,
+    compute_cost_usd,
+)
 
 # Matches exact store identifiers (ORD-..., SKU-..., TRK-..., RMA-...) without trailing punctuation
 ID_PATTERN = re.compile(r"\b(?:ORD|SKU|TRK|RMA)-[A-Z0-9-]+\b")
@@ -61,7 +68,7 @@ def percentile(values: list, p: float) -> float:
 
 
 def evaluate_and_summarize(all_results: list, temperatures: list) -> tuple:
-    """Recompute per-run costs, ID preservation, Jaccard similarity, and scoreboard stats."""
+    """Recompute per-run costs, thinking tokens (total - input - output), ID preservation, Jaccard, and scoreboard."""
     temp_strs = [str(t) for t in temperatures]
     temp_metrics = {
         t: {
@@ -70,7 +77,8 @@ def evaluate_and_summarize(all_results: list, temperatures: list) -> tuple:
             "in_tok": [],
             "out_tok": [],
             "think_tok": [],
-            "id_ok": [],
+            "id_ok_all": [],
+            "id_ok_with_ids": [],
             "models": Counter(),
         }
         for t in temp_strs
@@ -81,16 +89,19 @@ def evaluate_and_summarize(all_results: list, temperatures: list) -> tuple:
 
     for case_record in all_results:
         user_input = case_record["input"]
+        has_ids = bool(ID_PATTERN.findall(user_input))
         for t_str in temp_strs:
             if t_str not in case_record["runs"]:
                 continue
             run = case_record["runs"][t_str]
-            model_name = run.get("model", "gemini-2.5-flash")
+            model_name = run.get("model", DEFAULT_MODEL)
             in_tok = int(run.get("input_tokens", 0))
             out_tok = int(run.get("output_tokens", 0))
-            think_tok = int(run.get("thinking_tokens", 0))
+            saved_total = int(run.get("total_tokens", in_tok + out_tok))
+            saved_think = int(run.get("thinking_tokens", 0))
+            inferred_think = max(0, saved_total - in_tok - out_tok)
+            think_tok = max(saved_think, inferred_think)
 
-            # Recompute exact cost using official model pricing
             cost_usd = round(
                 compute_cost_usd(
                     input_tokens=in_tok,
@@ -113,7 +124,9 @@ def evaluate_and_summarize(all_results: list, temperatures: list) -> tuple:
             tm["in_tok"].append(in_tok)
             tm["out_tok"].append(out_tok)
             tm["think_tok"].append(think_tok)
-            tm["id_ok"].append(1.0 if id_preserved else 0.0)
+            tm["id_ok_all"].append(1.0 if id_preserved else 0.0)
+            if has_ids:
+                tm["id_ok_with_ids"].append(1.0 if id_preserved else 0.0)
             tm["models"][model_name] += 1
             overall_models[model_name] += 1
 
@@ -148,6 +161,7 @@ def evaluate_and_summarize(all_results: list, temperatures: list) -> tuple:
         mean_cost = statistics.mean(tm["costs"])
         summary_by_temp[t_str] = {
             "n_cases": len(tm["in_tok"]),
+            "n_cases_with_ids": len(tm["id_ok_with_ids"]),
             "mean_input_tokens": round(mean_in, 2),
             "mean_output_tokens": round(mean_out, 2),
             "mean_thinking_tokens": round(statistics.mean(tm["think_tok"]), 2),
@@ -156,7 +170,10 @@ def evaluate_and_summarize(all_results: list, temperatures: list) -> tuple:
             "total_temp_spend_usd": round(sum(tm["costs"]), 6),
             "latency_p50_s": round(percentile(tm["latencies"], 0.50), 3),
             "latency_p95_s": round(percentile(tm["latencies"], 0.95), 3),
-            "exact_id_preservation_rate": round(statistics.mean(tm["id_ok"]), 4),
+            "exact_id_preservation_rate": round(
+                statistics.mean(tm["id_ok_with_ids"]) if tm["id_ok_with_ids"] else 1.0,
+                4,
+            ),
             "model_distribution": dict(tm["models"]),
         }
 
@@ -171,6 +188,7 @@ def evaluate_and_summarize(all_results: list, temperatures: list) -> tuple:
     primary = summary_by_temp[primary_temp]
     total_spend_usd = round(sum(sum(tm["costs"]) for tm in temp_metrics.values()), 4)
 
+    dominant_model = overall_models.most_common(1)[0][0] if overall_models else DEFAULT_MODEL
     scoreboard = {
         "week": 1,
         "test_set_size": len(all_results),
@@ -188,6 +206,7 @@ def evaluate_and_summarize(all_results: list, temperatures: list) -> tuple:
         "spend_total_usd": total_spend_usd,
         "latency_p95_s": primary["latency_p95_s"],
         "use_case": "UC1",
+        "model": dominant_model,
         "model_distribution_75_calls": dict(overall_models),
         "temperature_comparison": summary_by_temp,
         "pricing_assumptions_usd_per_1m": MODEL_PRICING_PER_1M_USD,
@@ -205,15 +224,20 @@ def main() -> None:
         help="Temperatures to test (default: 0.0 0.7 1.2)",
     )
     parser.add_argument(
-        "--limit",
-        type=int,
-        default=None,
-        help="Optional limit on number of inputs",
+        "--model",
+        type=str,
+        default=DEFAULT_MODEL,
+        help=f"Single Gemini model to use for all runs (default: {DEFAULT_MODEL})",
     )
     parser.add_argument(
         "--recompute",
         action="store_true",
-        help="Recompute metrics and scoreboard from existing data/w1_baseline_outputs.json without making new API calls",
+        help="Recompute metrics and scoreboard from existing data/w1_baseline_outputs.json",
+    )
+    parser.add_argument(
+        "--unify-model",
+        action="store_true",
+        help="Re-run only the calls in data/w1_baseline_outputs.json that used a different model so all 75 calls use --model",
     )
     args = parser.parse_args()
 
@@ -225,14 +249,37 @@ def main() -> None:
     if args.recompute:
         all_results = json.loads(outputs_path.read_text(encoding="utf-8"))
         print(f"Recomputing metrics from {len(all_results)} saved cases in {outputs_path.name}...")
+    elif args.unify_model and outputs_path.exists():
+        all_results = json.loads(outputs_path.read_text(encoding="utf-8"))
+        system_prompt = prompt_path.read_text(encoding="utf-8").strip()
+        rerun_count = 0
+        allowed_models = {"gemini-2.5-flash", "gemini-3.1-flash-lite"}
+        for case_record in all_results:
+            for temp in args.temperatures:
+                t_str = str(temp)
+                run = case_record["runs"].get(t_str)
+                if not run or run.get("model") not in allowed_models:
+                    rerun_count += 1
+                    print(
+                        f"[Replacing 3.5-flash #{rerun_count}] {case_record['id']} T={t_str}...",
+                        flush=True,
+                    )
+                    res = call_llm(
+                        user_message=case_record["input"],
+                        system_prompt=system_prompt,
+                        temperature=temp,
+                    )
+                    case_record["runs"][t_str] = res
+                    outputs_path.write_text(
+                        json.dumps(all_results, indent=2, ensure_ascii=False),
+                        encoding="utf-8",
+                    )
+                    time.sleep(1.5)
     else:
         cases = load_jsonl(inputs_path)
-        if args.limit:
-            cases = cases[: args.limit]
         system_prompt = prompt_path.read_text(encoding="utf-8").strip()
-
         print(f"Loaded {len(cases)} cases from {inputs_path.name}")
-        print(f"Running temperatures: {args.temperatures}\n")
+        print(f"Running temperatures {args.temperatures} on {args.model}\n")
 
         all_results = []
         for idx, case in enumerate(cases, start=1):
@@ -250,8 +297,10 @@ def main() -> None:
                     user_message=case["input"],
                     system_prompt=system_prompt,
                     temperature=temp,
+                    model=args.model,
                 )
                 case_record["runs"][str(temp)] = res
+                time.sleep(2.5)
             all_results.append(case_record)
 
     all_results, scoreboard = evaluate_and_summarize(all_results, args.temperatures)
@@ -270,14 +319,13 @@ def main() -> None:
         )
         print(
             f"T={temp_str}: in={stats['mean_input_tokens']} tok, out={stats['mean_output_tokens']} tok, "
+            f"think={stats['mean_thinking_tokens']} tok, "
             f"cost/task=${stats['cost_per_task_usd']:.6f} (${stats['cost_per_1000_requests_usd']:.4f}/1k), "
             f"p50={stats['latency_p50_s']}s, p95={stats['latency_p95_s']}s, "
-            f"ID-preserved={stats['exact_id_preservation_rate']*100:.1f}%{j_str}"
+            f"ID-preserved={stats['exact_id_preservation_rate']*100:.1f}% ({stats['n_cases_with_ids']}/{stats['n_cases_with_ids']}){j_str}"
         )
     print(f"Total week spend (75 calls): ${scoreboard['spend_week_usd']:.4f}")
     print(f"Model distribution: {scoreboard['model_distribution_75_calls']}")
-    print(f"Saved outputs -> {outputs_path}")
-    print(f"Saved scoreboard -> {scoreboard_path}")
 
 
 if __name__ == "__main__":
