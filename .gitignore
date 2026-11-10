@@ -1,0 +1,29 @@
+# Secrets and environment variables (Rule R13)
+.env
+.env.*
+!.env.example
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Course reference materials & internal team onboarding guides (kept locally, not pushed to project repo)
+*.pdf
+*.pptx
+*.zip
+docs/TAKIM_REHBERI_TR.md
+docs/AGENT_ONBOARDING.md
+docs/7_week_playbook.md
+docs/UYGAR_MASTER_PIPELINE.md
+ANTIGRAVITY.md
+report_template.md
+UYGAR_GITHUB_YUKLE/
+
+# OS files
+.DS_Store
+
