@@ -1,7 +1,7 @@
 # Appendix C — Use Case Preference Form
 
 **Team Name:** TrailGuard AI  
-**Course:** AIC 390 — Applied LLM Systems (Spring 2026)
+**Course:** AIC 390 — Prompt Engineering (Fall 2026)
 
 ---
 
