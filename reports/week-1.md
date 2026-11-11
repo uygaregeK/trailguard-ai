@@ -39,18 +39,18 @@ We built the repository, multi-temperature evaluation harness (`eval/run_w1_base
 {
   "week": 1,
   "test_set_size": 25,
-  "e2e_accuracy": null,
-  "abstention_correct": null,
-  "unsupported_claims": null,
-  "hit_at_5": null,
-  "mrr": null,
-  "task_success": null,
-  "pass_k": null,
-  "injection_success": null,
-  "cost_per_task_usd": 0.000362,
-  "latency_p50_s": 1.115,
-  "spend_week_usd": 0.028,
-  "spend_total_usd": 0.028
+  "e2e_accuracy":       {"value": null, "ci95": null, "n": null, "script": null},
+  "abstention_correct": {"value": null, "ci95": null, "n": null, "script": null},
+  "unsupported_claims": {"value": null, "n": null, "script": null},
+  "hit_at_5":           {"value": null, "n": null, "script": null},
+  "mrr":                {"value": null, "n": null, "script": null},
+  "task_success":       {"value": null, "n": null, "script": null},
+  "pass_k":             {"k": null, "value": null, "n": null, "script": null},
+  "injection_success":  {"value": null, "n": null, "script": null},
+  "cost_per_task_usd":  0.000362,
+  "latency_p50_s":      1.115,
+  "spend_week_usd":     0.028,
+  "spend_total_usd":    0.028
 }
 ```
 
@@ -76,7 +76,7 @@ Changes to any test set this week: Created the initial 25-case baseline evaluati
 | # | Input (short) | What happened | Root cause | Fix (done or planned) |
 |---|---|---|---|---|
 | 1 | `W1-003`: *"If I exchange a hydration vest for a larger size, do I have to pay for the return courier and replacement shipping?"* | Across $T=0.0$ (`50` output tokens), $T=0.7$ (`64` tokens), and $T=1.2$ (`46` tokens) on `gemini-2.5-flash`, the model fabricated a free-shipping policy (`"you typically do not have to pay for the return courier or the replacement shipping"` / `"TrailRun TR covers the shipping costs for both"`), even though `prompts/v1_baseline.txt` contains no exchange shipping fee rule. | **Module 1 — Knowledge Cutoff & Next-Token Plausibility (Hallucination)**: Without the store's exchange logistics policy (`POL-005`) in context, the model completes the prompt with plausible-sounding e-commerce boilerplate instead of abstaining. | **Planned (Week 3 — `W3.1`–`W3.4`)**: Index the 32 store policy/SOP documents with hybrid BM25 + dense RAG, reranker, numbered citations, and a fixed abstention response when documents lack the answer. |
-| 2 | `W1-011` ($T=1.2$): *"I need to open a return for defective arrival on order ORD-2026-9015 for the broken carbon pole SKU-LKI-ULTZ-120."* | While $T=0.0$ (`169` tokens) and $T=0.7$ (`175` tokens) preserved both `ORD-2026-9015` and `SKU-LKI-ULTZ-120`, at $T=1.2$ (`94` tokens, `gemini-2.5-flash`) the model wrote `"initiating a return for the defective pole from order ORD-2026-9015"` and completely dropped `SKU-LKI-ULTZ-120` (reducing exact ID preservation to $14/15 = 93.3\%$). | **Module 1 — BPE Subword Tokenization & High-$T$ Sampling Entropy**: Flattening logits at $T=1.2$ increases the probability of paraphrasing multi-token alphanumeric SKUs into generic noun phrases (`"the defective pole"`). | **Planned (Week 2 — `W2.1`)**: Extract `entities` (`order_id`, `sku`) into a strict JSON schema at $T=0.0$ with regex validation and automatic retry. |
+| 2 | `W1-011` ($T=1.2$): *"I need to open a return for defective arrival on order ORD-2026-9015 for the broken carbon pole SKU-LKI-ULTZ-120."* | While $T=0.0$ (`70` tokens) and $T=0.7$ (`77` tokens) preserved both `ORD-2026-9015` and `SKU-LKI-ULTZ-120`, at $T=1.2$ (`94` tokens, `gemini-2.5-flash`) the model wrote `"initiating a return for the defective pole from order ORD-2026-9015"` and completely dropped `SKU-LKI-ULTZ-120` (reducing exact ID preservation to $14/15 = 93.3\%$). | **Module 1 — BPE Subword Tokenization & High-$T$ Sampling Entropy**: Flattening logits at $T=1.2$ increases the probability of paraphrasing multi-token alphanumeric SKUs into generic noun phrases (`"the defective pole"`). | **Planned (Week 2 — `W2.1`)**: Extract `entities` (`order_id`, `sku`) into a strict JSON schema at $T=0.0$ with regex validation and automatic retry. |
 | 3 | `W1-010` ($T=0.7$) & `W1-024` ($T=1.2$): Requesting order lookup and return creation for `ORD-2026-8841`. | Despite `prompts/v1_baseline.txt` stating no live tools are connected yet, `gemini-2.5-flash` told the user `"I can look it up if you grant me permission to access order details for ORD-2026-8841"` (`W1-010`, $T=0.7$, `186` tokens) and `"Please confirm the delivery date if you have it, or I can attempt to look it up"` (`W1-024`, $T=1.2$, `162` tokens). | **Module 1 — Stateless Text Prediction Without Environment Grounding**: A bare LLM has no intrinsic awareness of runtime tool availability and generates conversational offers to "attempt a lookup" unless grounded by actual tool schemas. | **Planned (Week 4 — `W4.1`, `W4.7`)**: Wire deterministic `lookup_order`, `search_policy_docs`, and sandboxed `create_return_request` tools into the bounded agent loop. |
 
 ---
