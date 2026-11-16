@@ -183,6 +183,30 @@ def classify_request(
     }
 
 
+def classify(
+    text: str,
+    max_retries: int = 2,
+    use_llm: bool = True,
+) -> dict[str, Any]:
+    """Top-level flat adapter expected by eval/run_w2_eval.py (`module.classify(text)`).
+
+    Returns `intent`, `entities`, and `urgency` at the top level along with
+    `cost_usd`, `latency_s`, `model`, `llm_valid`, and `used_fallback`.
+    """
+    result = classify_request(text, max_retries=max_retries, use_llm=use_llm)
+    c = result["classification"]
+    if hasattr(c, "model_dump"):
+        c = c.model_dump()
+    return {
+        **c,
+        "cost_usd": result.get("cost_usd", 0.0),
+        "latency_s": result.get("latency_s", 0.0),
+        "model": result.get("model"),
+        "llm_valid": result.get("llm_valid", False),
+        "used_fallback": result.get("used_fallback", False),
+    }
+
+
 if __name__ == "__main__":
     import argparse
 
