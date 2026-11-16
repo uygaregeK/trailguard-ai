@@ -2,9 +2,8 @@
 
 Defines the strict JSON schema required by Week 2 Deliverable W2.1:
   - intent: One of the canonical TrailRun TR support intents
-  - entities: Extracted exact store identifiers (order_id, sku, tracking_number, rma_id, product_Category)
+  - entities: Extracted exact store identifiers (order_id, sku, tracking_number, rma_id)
   - urgency: One of "low", "medium", "high"
-  - is_adversarial_or_untrusted: Boolean flag for prompt injection / override attempts
 """
 
 from __future__ import annotations
