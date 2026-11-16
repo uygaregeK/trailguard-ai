@@ -23,8 +23,8 @@ MODEL_PRICING_PER_1M_USD = {
     "gemini-3.5-flash": {"input": 1.50, "output": 9.00},
 }
 
-DEFAULT_MODEL = "gemini-2.5-flash"
-FALLBACK_MODELS = ["gemini-2.5-flash", "gemini-3.1-flash-lite"]
+DEFAULT_MODEL = "gemini-3.1-flash-lite"
+FALLBACK_MODELS = ["gemini-3.1-flash-lite", "gemini-2.5-flash-lite", "gemini-2.5-flash"]
 
 
 def get_model_pricing(model_name: str) -> dict:
@@ -57,8 +57,8 @@ def call_llm(
     model: str | None = None,
     allow_fallback: bool = True,
 ) -> dict:
-    """Call Google Gemini API (primary: gemini-2.5-flash with thinking_budget=0;
-    fallback on Free Tier 20 RPD quota exhaustion: gemini-3.1-flash-lite).
+    """Call Google Gemini API (default high-quota Free Tier primary: gemini-3.1-flash-lite;
+    fallback order: gemini-2.5-flash-lite, then gemini-2.5-flash with thinking_budget=0).
     """
     from google import genai
     from google.genai import types

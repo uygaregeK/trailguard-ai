@@ -151,6 +151,7 @@ def classify_request(
             if is_valid:
                 return {
                     "classification": parsed,
+                    "model": res.get("model"),
                     "valid": True,
                     "llm_valid": True,
                     "used_fallback": False,
