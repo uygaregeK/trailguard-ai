@@ -1,6 +1,6 @@
 # Weekly Report — Week 2
 
-| | |
+| Field | Value |
 |---|---|
 | **Team** | TrailGuard AI |
 | **Use case** | UC1 — Online Store Support Agent (*TrailRun TR* Specialty Trail Running & Outdoor Gear Store) |
@@ -8,7 +8,7 @@
 | **Repository** | `https://github.com/uygaregeK/trailguard-ai` |
 | **Commit tag** | `week-2` |
 | **Presenter** | Dilara Yıldız & Arda Agovic |
-| **Members and roles** | Uygar Ege Kocakır (Agent and tools lead), Dilara Yıldız (Data and retrieval lead), Arda Agovic (Evaluation and safety lead) |
+| **Members and roles** | Dilara Yıldız (data and retrieval lead); Uygar Ege Kocakır (agent and tools lead); Arda Agovic (evaluation and safety lead) |
 
 ---
 
@@ -22,14 +22,14 @@ We moved from reading outputs by hand to measuring them: a fixed 45-case test se
 
 | ID | Status | Evidence | Note |
 |---|---|---|---|
-| W2.1 | Done | [`src/schemas.py`](../src/schemas.py), [`src/classifier.py`](../src/classifier.py), `classifier` block of [`scoreboard_w2.json`](scoreboard_w2.json) | JSON classifier (intent, entities, urgency) at temperature 0 with schema validation and up to 2 retries. On the 45 cases: 45/45 schema-valid on the first attempt, entities exact in 44/45, urgency correct in 14/45. Intent accuracy is not reported: the classifier and the test set use different intent labels (see Section 5). |
-| W2.2 | Done | [`prompts/v2_six_blocks.txt`](../prompts/v2_six_blocks.txt), [`prompts/v3_six_blocks_fewshot.txt`](../prompts/v3_six_blocks_fewshot.txt) | Main prompt built from the six building blocks. Blocks 1–5 are identical in v2 and v3; only block 6 (examples) differs. |
-| W2.3 | Done | [`data/w2_test_set.jsonl`](../data/w2_test_set.jsonl) | 45 cases with expected behavior and expected answer: 19 normal, 10 edge, 7 unanswerable, 9 adversarial (24 written by Dilara, 21 by Arda). |
-| W2.4 | Done | [`eval/run_w2_eval.py`](../eval/run_w2_eval.py) | `python3 eval/run_w2_eval.py` runs every case on every prompt version and writes `reports/scoreboard_w2.json`; `--recompute` rebuilds it from the saved rows without API calls. |
-| W2.5 | Done | [`eval/stats.py`](../eval/stats.py), [`scoreboard_w2.json`](scoreboard_w2.json) | Accuracy with 95% intervals for three versions and McNemar's test between the best two (`prompt_comparison`, `mcnemar_best_two`). |
-| W2.6 | Done, target not met | [`src/judge.py`](../src/judge.py), [`eval/judge_kappa.py`](../eval/judge_kappa.py), [`w2_judge_kappa.json`](w2_judge_kappa.json), [`docs/w2_labeling_rubric.md`](../docs/w2_labeling_rubric.md), `data/w2_human_labels_20.jsonl` | Pass/fail judge on criteria C1–C5, checked against 20 blind human labels: κ = 0.29 (target 0.6). See Experiment 2. |
-| W2.7 | Done | [`docs/w2_hallucination_log.md`](../docs/w2_hallucination_log.md) | 14 typed examples: 9 fabricated fact, 3 unfaithful, 2 reasoning error. |
-| W2.8 | Done | [`eval/run_w2_injections.py`](../eval/run_w2_injections.py), [`data/w2_direct_injections.jsonl`](../data/w2_direct_injections.jsonl), [`data/w2_injection_results.json`](../data/w2_injection_results.json) | 3 direct injection attempts against each prompt version, with a fixed success rule per attack. None succeeded (Experiment 3). |
+| W2.1 | done | [`src/schemas.py`](../src/schemas.py), [`src/classifier.py`](../src/classifier.py), `classifier` block of [`scoreboard_w2.json`](scoreboard_w2.json) | JSON classifier (intent, entities, urgency) at temperature 0 with schema validation and up to 2 retries. On the 45 cases: 45/45 schema-valid on the first attempt, entities exact in 44/45, urgency correct in 14/45. Intent accuracy is not reported: the classifier and the test set use different intent labels (see Section 5). |
+| W2.2 | done | [`prompts/v2_six_blocks.txt`](../prompts/v2_six_blocks.txt), [`prompts/v3_six_blocks_fewshot.txt`](../prompts/v3_six_blocks_fewshot.txt) | Main prompt built from the six building blocks. Blocks 1–5 are identical in v2 and v3; only block 6 (examples) differs. |
+| W2.3 | done | [`data/w2_test_set.jsonl`](../data/w2_test_set.jsonl) | 45 cases with expected behavior and expected answer: 19 normal, 10 edge, 7 unanswerable, 9 adversarial (24 written by Dilara, 21 by Arda). |
+| W2.4 | done | [`eval/run_w2_eval.py`](../eval/run_w2_eval.py) | `python3 eval/run_w2_eval.py` runs every case on every prompt version and writes `reports/scoreboard_w2.json`; `--recompute` rebuilds it from the saved rows without API calls. |
+| W2.5 | done | [`eval/stats.py`](../eval/stats.py), [`scoreboard_w2.json`](scoreboard_w2.json) | Accuracy with 95% intervals for three versions and McNemar's test between the best two (`prompt_comparison`, `mcnemar_best_two`). |
+| W2.6 | done | [`src/judge.py`](../src/judge.py), [`eval/judge_kappa.py`](../eval/judge_kappa.py), [`w2_judge_kappa.json`](w2_judge_kappa.json), [`docs/w2_labeling_rubric.md`](../docs/w2_labeling_rubric.md), `data/w2_human_labels_20.jsonl` | Pass/fail judge on criteria C1–C5, checked against 20 blind human labels: κ = 0.29, below our 0.6 target. See Experiment 2. |
+| W2.7 | done | [`docs/w2_hallucination_log.md`](../docs/w2_hallucination_log.md) | 14 typed examples: 9 fabricated fact, 3 unfaithful, 2 reasoning error. |
+| W2.8 | done | [`eval/run_w2_injections.py`](../eval/run_w2_injections.py), [`data/w2_direct_injections.jsonl`](../data/w2_direct_injections.jsonl), [`data/w2_injection_results.json`](../data/w2_injection_results.json) | 3 direct injection attempts against each prompt version, with a fixed success rule per attack. None succeeded (Experiment 3). |
 
 ---
 
@@ -126,7 +126,7 @@ Classifier (`W2.1`): urgency is correct in only 14 of 45 cases. The classifier l
 
 ## 6. Response to last week's feedback
 
-The written Week 1 feedback had not reached the author of this report by the tag deadline. Every point will be answered, one row each, in the Week 3 report.
+none this week (no written feedback on Week 1 was received)
 
 ---
 
@@ -142,7 +142,7 @@ none this week
 |---|---|---|---|---|
 | **Uygar Ege Kocakır** | Agent and tools lead | Built the request classifier with schema validation and retry (`W2.1`), wrote the six-block main prompts v2 and v3 (`W2.2`), and moved the default model to `gemini-3.1-flash-lite`. | `src/schemas.py`, `src/classifier.py`, `prompts/v2_six_blocks.txt`, `prompts/v3_six_blocks_fewshot.txt`, `src/llm.py` (commits `cd31635`, `3470e30`, `ac2f101`, `a91e1ec`) | 8–10 |
 | **Dilara Yıldız** | Data and retrieval lead | Wrote 24 test cases (`W2.3`), the hallucination log (`W2.7`), the human labeling rubric and the label-sheet script, and labeled 20 answers blind for the judge check (`W2.6`). | `data/w2_test_set.jsonl` (W2-D01–D24), `docs/w2_hallucination_log.md`, `docs/w2_labeling_rubric.md`, `eval/make_label_sheet.py`, `data/w2_human_labels_20.jsonl` (commits `b3c6dbe`, `c6cd662`, `752b560`) | 5 |
-| **Arda Agovic** | Evaluation and safety lead | Wrote 21 test cases and merged the 45-case set (`W2.3`), built the evaluation harness (`W2.4`), the statistics for the prompt comparison (`W2.5`), the LLM judge and the kappa check (`W2.6`) and the injection test (`W2.8`), ran the evaluation and wrote this report. | `data/w2_test_set.jsonl` (W2-A01–A21), `eval/run_w2_eval.py`, `eval/stats.py`, `src/judge.py`, `eval/judge_kappa.py`, `eval/run_w2_injections.py`, `data/w2_direct_injections.jsonl`, `data/w2_outputs_*.jsonl`, `reports/scoreboard_w2.json`, `reports/week-2.md` (commits `244a369`, `8b07014` and the commit that adds this report) | 4 |
+| **Arda Agovic** | Evaluation and safety lead | Wrote 21 test cases and merged the 45-case set (`W2.3`), built the evaluation harness (`W2.4`), the statistics for the prompt comparison (`W2.5`), the LLM judge and the kappa check (`W2.6`) and the injection test (`W2.8`), ran the evaluation and wrote this report. | `data/w2_test_set.jsonl` (W2-A01–A21), `eval/run_w2_eval.py`, `eval/stats.py`, `src/judge.py`, `eval/judge_kappa.py`, `eval/run_w2_injections.py`, `data/w2_direct_injections.jsonl`, `data/w2_outputs_*.jsonl`, `reports/scoreboard_w2.json`, `reports/week-2.md` (commits `244a369`, `8b07014`, `db6a40e`) | 4 |
 
 ---
 
