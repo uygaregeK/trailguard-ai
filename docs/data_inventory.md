@@ -7,7 +7,7 @@
 
 ## 1. Unstructured Text Documents for RAG (`data/corpus/` — 32 Documents)
 
-In Week 3, we will index **32 markdown documents** (target: ~15,000 words total) covering *TrailRun TR*'s policies, product specs, sizing guides, and operational SOPs. All documents are **synthetic** and written by our team (rule R10): no real customer data, and no text copied from real retailers.
+In Week 3, we will index **32 markdown documents** (about 6,000 words in total) covering *TrailRun TR*'s policies, product specs, sizing guides, and operational SOPs. All documents are **synthetic** and written by our team (rule R10): no real customer data, and no text copied from real retailers.
 
 ### 1.1 Document metadata (YAML frontmatter on every document)
 
