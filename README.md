@@ -42,6 +42,9 @@ python -m src.classifier --live
 # Week 3 grounded RAG chain (offline retrieval + formatting check / live Gemini check)
 python -m src.rag_chain --offline
 python -m src.rag_chain
+
+# Interactive Week 3 Support UI (run with `--host 0.0.0.0` to share over same Wi-Fi)
+python demo_w3_rag_ui.py
 ```
 
 ---
