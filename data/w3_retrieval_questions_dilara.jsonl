@@ -1,0 +1,10 @@
+{"id": "W3R-D01", "query": "Ayakkabıyı aldım ama beğenmedim, geri göndermek için kaç günüm var?", "language": "tr", "gold_doc": "POL-001", "gold_section": "§1", "style": "turkish", "author": "dilara"}
+{"id": "W3R-D02", "query": "Koşu ceketimi bir kere dağda giydim, sonra küçük geldiğini fark ettim. Geri alır mısınız?", "language": "tr", "gold_doc": "POL-002", "gold_section": "§2", "style": "turkish", "author": "dilara"}
+{"id": "W3R-D03", "query": "Saatimi telefonuma bağladım ama hoşuma gitmedi, geri verebilir miyim?", "language": "tr", "gold_doc": "POL-003", "gold_section": "§2", "style": "turkish", "author": "dilara"}
+{"id": "W3R-D04", "query": "Büyük indirimden aldığım montun bedeni olmadı, değiştirebilir miyim?", "language": "tr", "gold_doc": "POL-004", "gold_section": "§2", "style": "turkish", "author": "dilara"}
+{"id": "W3R-D05", "query": "Dört iş günüdür kargomda hiçbir hareket yok, ne yapmalıyım?", "language": "tr", "gold_doc": "SHP-003", "gold_section": "§2", "style": "turkish", "author": "dilara"}
+{"id": "W3R-D06", "query": "Siparişimi Almanya'daki adresime gönderebilir misiniz?", "language": "tr", "gold_doc": "SHP-005", "gold_section": "§1", "style": "turkish", "author": "dilara"}
+{"id": "W3R-D07", "query": "Param kredi kartıma kaç günde geri yatar?", "language": "tr", "gold_doc": "POL-008", "gold_section": "§2", "style": "turkish", "author": "dilara"}
+{"id": "W3R-D08", "query": "How long do I have to tell you that something came broken in the box?", "language": "en", "gold_doc": "POL-006", "gold_section": "§1", "style": "paraphrase", "author": "dilara"}
+{"id": "W3R-D09", "query": "I already swapped sizes once on this order and need to swap again. Who pays the postage this time?", "language": "en", "gold_doc": "POL-005", "gold_section": "§3", "style": "paraphrase", "author": "dilara"}
+{"id": "W3R-D10", "query": "The tracking page says my package was dropped off, but there is nothing at my door.", "language": "en", "gold_doc": "SHP-003", "gold_section": "§5", "style": "paraphrase", "author": "dilara"}
