@@ -15,9 +15,10 @@ Two kinds of test set are read:
   * W2 test set (default, until the W3.5 set exists): rows with "must_cite".
     A chunk matches if it comes from any must_cite document (document level).
 
-    python3 eval/eval_retrieval.py                        # W2 set, both chunking strategies
-    python3 eval/eval_retrieval.py --test-set data/w3_retrieval_test_set.jsonl
-    python3 eval/eval_retrieval.py --out reports/w3_retrieval_bm25.json
+    python3 eval/eval_retrieval.py                        # BM25, both chunking strategies
+    python3 eval/eval_retrieval.py --mode all             # bm25, dense, hybrid, hybrid_rerank
+    python3 eval/eval_retrieval.py --test-set data/w3_retrieval_test_set.jsonl --mode all
+    python3 eval/eval_retrieval.py --mode all --out reports/w3_retrieval.json
 """
 
 import argparse
@@ -28,7 +29,7 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT_DIR / "src"))
 
-from retriever import HybridRetriever
+from retriever import MODES, DenseRetriever, HybridRetriever, Reranker
 
 DEFAULT_TEST_SET = ROOT_DIR / "data" / "w2_test_set.jsonl"
 CUTOFFS = (1, 3, 5, 10)
@@ -105,28 +106,41 @@ def main():
     parser = argparse.ArgumentParser(description="hit@k and MRR for the retriever")
     parser.add_argument("--test-set", type=Path, default=DEFAULT_TEST_SET)
     parser.add_argument("--strategy", choices=["section", "window", "both"], default="both")
+    parser.add_argument("--mode", choices=[*MODES, "all"], default="bm25",
+                        help="Retriever arm; 'all' runs the four ablation arms")
     parser.add_argument("--out", type=Path, help="Write the full results as JSON")
     parser.add_argument("--show-misses", action="store_true", help="List questions with no hit in the top 5")
     args = parser.parse_args()
 
     questions = load_questions(args.test_set)
     strategies = ["section", "window"] if args.strategy == "both" else [args.strategy]
-    mode = "bm25"  # becomes "hybrid" once the dense retriever and reranker are plugged in
+    modes = list(MODES) if args.mode == "all" else [args.mode]
 
-    print(f"Test set: {args.test_set.name} | questions with a gold location: {len(questions)} | mode: {mode}\n")
-    print(f"{'strategy':9s} {'n':>3s} " + " ".join(f"{'hit@' + str(k):>6s}" for k in CUTOFFS) + f" {'MRR':>6s}")
+    # Load each model once and share it between strategies and modes
+    dense = DenseRetriever() if any(m != "bm25" for m in modes) else None
+    reranker = Reranker() if "hybrid_rerank" in modes else None
 
-    results = {"test_set": args.test_set.name, "mode": mode, "strategies": {}}
-    for strategy in strategies:
-        result = evaluate(HybridRetriever(strategy=strategy), questions)
-        results["strategies"][strategy] = result
-        rows = [(strategy, result["overall"])] + [(f"  {lang}", s) for lang, s in result["by_language"].items()]
-        for label, s in rows:
-            print(f"{label:9s} {s['n']:3d} " + " ".join(f"{s[f'hit_at_{k}']:6.3f}" for k in CUTOFFS) + f" {s['mrr']:6.3f}")
-        if args.show_misses:
-            for p in result["per_question"]:
-                if not p["rank"] or p["rank"] > 5:
-                    print(f"    miss@5 {p['id']} ({p['language']}) gold={p['gold']} rank={p['rank']} top={p['top_3']}")
+    print(f"Test set: {args.test_set.name} | questions with a gold location: {len(questions)}\n")
+    header = f"{'mode':14s} {'strategy':9s} {'n':>3s} " + " ".join(f"{'hit@' + str(k):>6s}" for k in CUTOFFS) + f" {'MRR':>6s}"
+    print(header)
+
+    results = {"test_set": args.test_set.name, "runs": {}}
+    if dense is not None:
+        results["embedding_model"] = dense.model_name
+    if reranker is not None:
+        results["reranker_model"] = reranker.model_name
+    for mode in modes:
+        for strategy in strategies:
+            retriever = HybridRetriever.from_mode(mode, strategy=strategy, dense=dense, reranker=reranker)
+            result = evaluate(retriever, questions)
+            results["runs"][f"{mode}/{strategy}"] = result
+            rows = [(strategy, result["overall"])] + [(f"  {lang}", s) for lang, s in result["by_language"].items()]
+            for label, s in rows:
+                print(f"{mode:14s} {label:9s} {s['n']:3d} " + " ".join(f"{s[f'hit_at_{k}']:6.3f}" for k in CUTOFFS) + f" {s['mrr']:6.3f}")
+            if args.show_misses:
+                for p in result["per_question"]:
+                    if not p["rank"] or p["rank"] > 5:
+                        print(f"    miss@5 {p['id']} ({p['language']}) gold={p['gold']} rank={p['rank']} top={p['top_3']}")
         print()
 
     if args.out:

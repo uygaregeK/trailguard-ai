@@ -1,4 +1,5 @@
 google-genai>=1.0.0
 python-dotenv>=1.0.0
 pydantic>=2.0.0
-
+# W3 retrieval: local multilingual embeddings and reranker (src/retriever.py)
+sentence-transformers>=3.0.0
