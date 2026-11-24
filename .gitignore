@@ -27,3 +27,7 @@ UYGAR_GITHUB_YUKLE/
 # OS files
 .DS_Store
 
+data/w3_cache/embeddings_*
+data/chunks_*.jsonl
+.w3_model
+.w3_judge_model

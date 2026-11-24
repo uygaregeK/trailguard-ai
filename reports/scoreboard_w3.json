@@ -1,0 +1,298 @@
+{
+  "week": 3,
+  "test_set_size": 45,
+  "e2e_accuracy": {
+    "value": 0.5556,
+    "ci95": [
+      0.4104,
+      0.7007
+    ],
+    "n": 45,
+    "script": "eval/run_w3_rag.py"
+  },
+  "abstention_correct": {
+    "value": 1.0,
+    "ci95": [
+      1.0,
+      1.0
+    ],
+    "n": 7,
+    "script": "eval/run_w3_rag.py"
+  },
+  "unsupported_claims": {
+    "value": 0.0098,
+    "ci95": [
+      0.0,
+      0.0289
+    ],
+    "n": 102,
+    "script": "eval/run_w3_rag.py"
+  },
+  "hit_at_5": {
+    "value": 0.92,
+    "ci95": [
+      0.8448,
+      0.9952
+    ],
+    "n": 50,
+    "script": "eval/run_w3_rag.py"
+  },
+  "mrr": {
+    "value": 0.791,
+    "ci95": [
+      0.6945,
+      0.8879
+    ],
+    "n": 50,
+    "script": "eval/run_w3_rag.py"
+  },
+  "task_success": {
+    "value": null,
+    "n": null,
+    "script": null
+  },
+  "pass_k": {
+    "k": null,
+    "value": null,
+    "n": null,
+    "script": null
+  },
+  "injection_success": {
+    "value": null,
+    "n": null,
+    "script": null
+  },
+  "cost_per_task_usd": 0.000486,
+  "latency_p50_s": 2.943,
+  "spend_week_usd": 0.1536,
+  "spend_total_usd": 0.3313,
+  "use_case": "UC1",
+  "system": {
+    "retrieval_mode": "hybrid_rerank",
+    "chunking": "section",
+    "top_k": 5,
+    "access_levels": [
+      "public"
+    ],
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "reranker_model": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+    "rag_prompt": "prompts/v3_rag.txt",
+    "answer_models_used": {
+      "gemini-2.5-flash": 24,
+      "gemini-3.5-flash-lite": 57,
+      "gemini-3.1-flash-lite": 4
+    },
+    "choice_rule": "section-chunk mode with the highest MRR on this set (ties: hit@5)"
+  },
+  "judge_model": "gemini-3.5-flash-lite",
+  "judge_version": 3,
+  "faithfulness_version": 1,
+  "test_set_file": "data/w2_test_set.jsonl",
+  "test_set_sha256": "75cea1b638d2bf6f0123c3eae0dd8aa5832fe2be0955a65869bc13974c19ff35",
+  "retrieval_test_file": "data/w3_retrieval_test.jsonl",
+  "retrieval_test_sha256": "8a0703abc1d47588f2e9a69869193f0541dd19c072bd81d45500a2b271c3b3a2",
+  "retrieval_test_size": 50,
+  "retrieval_ablation": "reports/w3_retrieval.json",
+  "rag_vs_no_rag": {
+    "judge_model": "gemini-3.5-flash-lite",
+    "judge_version": 3,
+    "with_rag": {
+      "value": 0.5556,
+      "ci95": [
+        0.4104,
+        0.7007
+      ],
+      "n": 45,
+      "correct": 25
+    },
+    "without_rag_w2_v3": {
+      "value": 0.8889,
+      "ci95": [
+        0.7971,
+        0.9807
+      ],
+      "n": 45,
+      "correct": 40
+    },
+    "corpus_cases": {
+      "with_rag": 7,
+      "without_rag": 5,
+      "n": 9
+    },
+    "by_type_with_rag": {
+      "adversarial": {
+        "value": 0.6667,
+        "ci95": [
+          0.3587,
+          0.9747
+        ],
+        "n": 9,
+        "correct": 6
+      },
+      "edge": {
+        "value": 0.3,
+        "ci95": [
+          0.016,
+          0.584
+        ],
+        "n": 10,
+        "correct": 3
+      },
+      "normal": {
+        "value": 0.4737,
+        "ci95": [
+          0.2492,
+          0.6982
+        ],
+        "n": 19,
+        "correct": 9
+      },
+      "unanswerable": {
+        "value": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n": 7,
+        "correct": 7
+      }
+    },
+    "by_type_without_rag": {
+      "adversarial": {
+        "value": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n": 9,
+        "correct": 9
+      },
+      "edge": {
+        "value": 0.9,
+        "ci95": [
+          0.7141,
+          1.0
+        ],
+        "n": 10,
+        "correct": 9
+      },
+      "normal": {
+        "value": 0.7895,
+        "ci95": [
+          0.6062,
+          0.9728
+        ],
+        "n": 19,
+        "correct": 15
+      },
+      "unanswerable": {
+        "value": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n": 7,
+        "correct": 7
+      }
+    },
+    "mcnemar": {
+      "b": 4,
+      "c": 19,
+      "chi2": 9.7826,
+      "p_chi2": 0.0018,
+      "p_exact": 0.0026,
+      "significant_5pct": true,
+      "system_a": "rag",
+      "system_b": "w2_v3",
+      "a_right_b_wrong": 4,
+      "a_wrong_b_right": 19
+    },
+    "note": "without-RAG answers are the saved Week 2 answers (gemini-3.1-flash-lite); with-RAG answers come from rag_chain's model chain"
+  },
+  "w3_questions_e2e": {
+    "value": 0.85,
+    "ci95": [
+      0.7393,
+      0.9607
+    ],
+    "n": 40,
+    "correct": 34
+  },
+  "w3_questions_e2e_by_language": {
+    "en": {
+      "value": 0.8485,
+      "ci95": [
+        0.7262,
+        0.9708
+      ],
+      "n": 33,
+      "correct": 28
+    },
+    "tr": {
+      "value": 0.8571,
+      "ci95": [
+        0.5979,
+        1.0
+      ],
+      "n": 7,
+      "correct": 6
+    }
+  },
+  "faithfulness": {
+    "value": 0.0098,
+    "ci95": [
+      0.0,
+      0.0289
+    ],
+    "n": 102,
+    "unsupported": 1,
+    "answers_checked": 52,
+    "answers_with_any_unsupported": 1,
+    "judge_errors": 0
+  },
+  "faithfulness_judge_check": {
+    "n": 30,
+    "labels_file": "data/w3_claim_labels_ai_reference.jsonl",
+    "labelers": [
+      "Claude Opus 5.5 (Anthropic), drafted; reviewed and confirmed by Arda Agovic"
+    ],
+    "po": 1.0,
+    "pe": 0.9356,
+    "kappa": 1.0,
+    "confusion": {
+      "human_supported__judge_supported": 29,
+      "human_supported__judge_unsupported": 0,
+      "human_unsupported__judge_supported": 0,
+      "human_unsupported__judge_unsupported": 1
+    },
+    "disagreements": [],
+    "human_unsupported_rate": 0.0333,
+    "judge_unsupported_rate": 0.0333,
+    "skipped_changed_claims": [],
+    "script": "eval/faithfulness_kappa.py"
+  },
+  "citations": {
+    "answers": 85,
+    "abstained": 33,
+    "abstention_reasons": {
+      "insufficient_evidence": 32,
+      "citation_validation_failed": 1
+    },
+    "answered_with_citation": 52,
+    "citation_validation_failed": 1,
+    "gold_doc_cited_when_answered": {
+      "value": 0.96,
+      "n": 50
+    }
+  },
+  "failure_labels": {
+    "n_answers": 85,
+    "n_failures": 26,
+    "by_label": {
+      "generation": 24,
+      "retrieval": 2
+    }
+  },
+  "judge_errors": 0,
+  "offline_standins": false
+}

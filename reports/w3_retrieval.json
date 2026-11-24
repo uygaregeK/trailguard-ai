@@ -1,0 +1,6254 @@
+{
+  "test_set": "w3_retrieval_test.jsonl",
+  "n_questions": 50,
+  "access_levels": [
+    "public"
+  ],
+  "runs": {
+    "bm25/section": {
+      "overall": {
+        "n": 50,
+        "hit_at_1": 0.48,
+        "hit_at_3": 0.6,
+        "hit_at_5": 0.64,
+        "hit_at_10": 0.72,
+        "mrr": 0.55
+      },
+      "by_language": {
+        "en": {
+          "n": 36,
+          "hit_at_1": 0.611,
+          "hit_at_3": 0.75,
+          "hit_at_5": 0.778,
+          "hit_at_10": 0.889,
+          "mrr": 0.692
+        },
+        "tr": {
+          "n": 14,
+          "hit_at_1": 0.143,
+          "hit_at_3": 0.214,
+          "hit_at_5": 0.286,
+          "hit_at_10": 0.286,
+          "mrr": 0.185
+        }
+      },
+      "per_question": [
+        {
+          "id": "W3-R01",
+          "language": "en",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 6,
+          "top_3": [
+            "SHP-003#§3",
+            "POL-005#§5",
+            "POL-001#§2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R02",
+          "language": "en",
+          "gold": [
+            "POL-002#§2",
+            "POL-002#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#§6",
+            "POL-002#§1",
+            "SHP-003#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R03",
+          "language": "en",
+          "gold": [
+            "POL-002#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#§4",
+            "SHP-002#§3",
+            "SOP-001#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R04",
+          "language": "en",
+          "gold": [
+            "POL-003#§2",
+            "POL-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-003#§6",
+            "PRD-004#§4",
+            "POL-003#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R05",
+          "language": "en",
+          "gold": [
+            "POL-003#§5",
+            "POL-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-003#§6",
+            "POL-005#§1",
+            "POL-001#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R06",
+          "language": "en",
+          "gold": [
+            "POL-004#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#§1",
+            "SOP-001#§2",
+            "SOP-001#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R07",
+          "language": "en",
+          "gold": [
+            "POL-004#§4",
+            "POL-004#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#§6",
+            "POL-001#§6",
+            "POL-004#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R08",
+          "language": "en",
+          "gold": [
+            "POL-005#§3",
+            "POL-005#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#§6",
+            "POL-005#§3",
+            "POL-005#§2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R09",
+          "language": "en",
+          "gold": [
+            "POL-005#§4"
+          ],
+          "rank": 7,
+          "top_3": [
+            "POL-001#§2",
+            "POL-004#§1",
+            "SHP-003#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R10",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "POL-004#§3",
+            "POL-001#§5",
+            "POL-003#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R11",
+          "language": "en",
+          "gold": [
+            "POL-006#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#§2",
+            "WAR-002#§4",
+            "SHP-003#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R12",
+          "language": "en",
+          "gold": [
+            "POL-007#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#§1",
+            "PRD-004#§1",
+            "PRD-004#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R13",
+          "language": "en",
+          "gold": [
+            "POL-007#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#§3",
+            "POL-008#§2",
+            "POL-007#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R14",
+          "language": "en",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-008#§2",
+            "POL-008#§1",
+            "POL-007#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R15",
+          "language": "en",
+          "gold": [
+            "POL-008#§5"
+          ],
+          "rank": 10,
+          "top_3": [
+            "POL-007#§4",
+            "POL-008#§2",
+            "POL-008#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R16",
+          "language": "en",
+          "gold": [
+            "SHP-001#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "SHP-002#§4",
+            "SHP-001#§3",
+            "POL-006#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R17",
+          "language": "en",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#§4",
+            "SHP-002#§2",
+            "POL-005#§6"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R18",
+          "language": "en",
+          "gold": [
+            "SHP-002#§2"
+          ],
+          "rank": 3,
+          "top_3": [
+            "SHP-002#§3",
+            "SHP-002#§1",
+            "SHP-002#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R19",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§5",
+            "SHP-001#§1",
+            "SHP-003#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R20",
+          "language": "en",
+          "gold": [
+            "SHP-003#§4"
+          ],
+          "rank": 7,
+          "top_3": [
+            "PRD-010#§4",
+            "SHP-003#§3",
+            "SHP-003#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R21",
+          "language": "en",
+          "gold": [
+            "SHP-004#§2"
+          ],
+          "rank": 3,
+          "top_3": [
+            "SHP-004#§1",
+            "SHP-004#§3",
+            "SHP-004#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R22",
+          "language": "en",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-005#§1",
+            "PRD-010#§4",
+            "SHP-005#§2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R23",
+          "language": "en",
+          "gold": [
+            "SOP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#§2",
+            "SOP-001#§4",
+            "SOP-001#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R24",
+          "language": "en",
+          "gold": [
+            "SOP-001#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#§5",
+            "SOP-001#§2",
+            "SOP-001#§1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R25",
+          "language": "en",
+          "gold": [
+            "SOP-002#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-002#§3",
+            "SHP-004#§3",
+            "SOP-002#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R26",
+          "language": "en",
+          "gold": [
+            "WAR-001#§2",
+            "WAR-001#§3"
+          ],
+          "rank": null,
+          "top_3": [
+            "SOP-002#§1",
+            "POL-007#§2",
+            "POL-002#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R27",
+          "language": "en",
+          "gold": [
+            "WAR-002#§3",
+            "PRD-007#§4"
+          ],
+          "rank": 2,
+          "top_3": [
+            "WAR-002#§5",
+            "PRD-007#§4",
+            "PRD-007#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R28",
+          "language": "en",
+          "gold": [
+            "WAR-003#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#§3",
+            "PRD-010#§4",
+            "WAR-003#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R29",
+          "language": "en",
+          "gold": [
+            "WAR-004#§3"
+          ],
+          "rank": 2,
+          "top_3": [
+            "WAR-004#§5",
+            "WAR-004#§3",
+            "PRD-006#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R30",
+          "language": "en",
+          "gold": [
+            "WAR-005#§3"
+          ],
+          "rank": 2,
+          "top_3": [
+            "WAR-005#§2",
+            "WAR-005#§3",
+            "POL-006#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R31",
+          "language": "en",
+          "gold": [
+            "PRD-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-002#§2",
+            "PRD-003#§2",
+            "PRD-002#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R32",
+          "language": "en",
+          "gold": [
+            "PRD-008#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-008#§4",
+            "PRD-008#§3",
+            "PRD-008#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R33",
+          "language": "en",
+          "gold": [
+            "PRD-010#§2",
+            "PRD-010#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-010#§5",
+            "PRD-010#§2",
+            "PRD-004#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R34",
+          "language": "tr",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#§4",
+            "SHP-003#§1",
+            "PRD-004#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R35",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "WAR-004#§3",
+            "SHP-003#§3",
+            "SHP-005#§4"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R36",
+          "language": "tr",
+          "gold": [
+            "POL-002#§1",
+            "POL-002#§6",
+            "POL-001#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-004#§2",
+            "PRD-007#§2",
+            "PRD-001#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R37",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2",
+            "SHP-003#§6"
+          ],
+          "rank": 4,
+          "top_3": [
+            "PRD-002#§2",
+            "PRD-004#§2",
+            "PRD-007#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R38",
+          "language": "tr",
+          "gold": [
+            "POL-007#§4",
+            "POL-008#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-010#§5",
+            "PRD-010#§2",
+            "PRD-004#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R39",
+          "language": "tr",
+          "gold": [
+            "PRD-003#§3",
+            "PRD-003#§4",
+            "PRD-009#§3"
+          ],
+          "rank": 3,
+          "top_3": [
+            "PRD-003#§6",
+            "PRD-003#§1",
+            "PRD-003#§4"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R40",
+          "language": "tr",
+          "gold": [
+            "WAR-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#§2",
+            "WAR-003#§1",
+            "WAR-001#§6"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D01",
+          "language": "tr",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-004#§2",
+            "PRD-007#§2",
+            "PRD-010#§5"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D02",
+          "language": "tr",
+          "gold": [
+            "POL-002#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-010#§2",
+            "PRD-004#§3",
+            "PRD-007#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D03",
+          "language": "tr",
+          "gold": [
+            "POL-003#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-010#§5",
+            "PRD-010#§2",
+            "PRD-004#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D04",
+          "language": "tr",
+          "gold": [
+            "POL-004#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-010#§5",
+            "PRD-010#§2",
+            "PRD-004#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D05",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-004#§2",
+            "PRD-007#§2",
+            "PRD-010#§5"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D06",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-008#§2",
+            "PRD-004#§2",
+            "PRD-007#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D07",
+          "language": "tr",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-008#§2",
+            "PRD-004#§2",
+            "PRD-007#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D08",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "SHP-002#§3",
+            "POL-008#§2",
+            "POL-007#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D09",
+          "language": "en",
+          "gold": [
+            "POL-005#§3"
+          ],
+          "rank": 5,
+          "top_3": [
+            "POL-004#§4",
+            "POL-006#§3",
+            "POL-003#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D10",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§5",
+            "POL-004#§6",
+            "WAR-002#§4"
+          ],
+          "style": "paraphrase"
+        }
+      ],
+      "seconds": 0.01,
+      "ci95": {
+        "hit_at_5": [
+          0.507,
+          0.773
+        ],
+        "mrr": [
+          0.424,
+          0.6761
+        ]
+      },
+      "hit_at_5_by_style": {
+        "keyword": {
+          "value": 0.75,
+          "n": 12
+        },
+        "paraphrase": {
+          "value": 0.792,
+          "n": 24
+        },
+        "turkish": {
+          "value": 0.286,
+          "n": 14
+        }
+      }
+    },
+    "bm25/window": {
+      "overall": {
+        "n": 50,
+        "hit_at_1": 0.6,
+        "hit_at_3": 0.72,
+        "hit_at_5": 0.76,
+        "hit_at_10": 0.82,
+        "mrr": 0.673
+      },
+      "by_language": {
+        "en": {
+          "n": 36,
+          "hit_at_1": 0.722,
+          "hit_at_3": 0.889,
+          "hit_at_5": 0.917,
+          "hit_at_10": 0.944,
+          "mrr": 0.812
+        },
+        "tr": {
+          "n": 14,
+          "hit_at_1": 0.286,
+          "hit_at_3": 0.286,
+          "hit_at_5": 0.357,
+          "hit_at_10": 0.5,
+          "mrr": 0.315
+        }
+      },
+      "per_question": [
+        {
+          "id": "W3-R01",
+          "language": "en",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 4,
+          "top_3": [
+            "POL-002#w2",
+            "POL-005#w1",
+            "WAR-001#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R02",
+          "language": "en",
+          "gold": [
+            "POL-002#§2",
+            "POL-002#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w3",
+            "POL-002#w0",
+            "SHP-003#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R03",
+          "language": "en",
+          "gold": [
+            "POL-002#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w1",
+            "POL-002#w2",
+            "SOP-001#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R04",
+          "language": "en",
+          "gold": [
+            "POL-003#§2",
+            "POL-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-003#w2",
+            "PRD-004#w0",
+            "POL-003#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R05",
+          "language": "en",
+          "gold": [
+            "POL-003#§5",
+            "POL-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-003#w2",
+            "POL-003#w1",
+            "SHP-002#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R06",
+          "language": "en",
+          "gold": [
+            "POL-004#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#w0",
+            "SOP-001#w0",
+            "POL-008#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R07",
+          "language": "en",
+          "gold": [
+            "POL-004#§4",
+            "POL-004#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#w2",
+            "POL-004#w1",
+            "POL-001#w2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R08",
+          "language": "en",
+          "gold": [
+            "POL-005#§3",
+            "POL-005#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#w2",
+            "POL-005#w0",
+            "POL-005#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R09",
+          "language": "en",
+          "gold": [
+            "POL-005#§4"
+          ],
+          "rank": null,
+          "top_3": [
+            "POL-001#w1",
+            "POL-004#w0",
+            "SHP-003#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R10",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 2,
+          "top_3": [
+            "SHP-003#w1",
+            "POL-006#w0",
+            "POL-001#w2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R11",
+          "language": "en",
+          "gold": [
+            "POL-006#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#w0",
+            "WAR-002#w1",
+            "WAR-001#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R12",
+          "language": "en",
+          "gold": [
+            "POL-007#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#w0",
+            "PRD-004#w0",
+            "PRD-004#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R13",
+          "language": "en",
+          "gold": [
+            "POL-007#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#w1",
+            "POL-007#w0",
+            "POL-008#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R14",
+          "language": "en",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-008#w0",
+            "POL-002#w2",
+            "POL-008#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R15",
+          "language": "en",
+          "gold": [
+            "POL-008#§5"
+          ],
+          "rank": 3,
+          "top_3": [
+            "POL-008#w0",
+            "POL-007#w1",
+            "POL-008#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R16",
+          "language": "en",
+          "gold": [
+            "SHP-001#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "SHP-002#w0",
+            "SHP-001#w0",
+            "POL-006#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R17",
+          "language": "en",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#w0",
+            "POL-005#w1",
+            "SHP-001#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R18",
+          "language": "en",
+          "gold": [
+            "SHP-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-002#w0",
+            "SHP-003#w1",
+            "SHP-003#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R19",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w1",
+            "SHP-002#w0",
+            "SHP-001#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R20",
+          "language": "en",
+          "gold": [
+            "SHP-003#§4"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-010#w1",
+            "SHP-003#w0",
+            "SHP-003#w2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R21",
+          "language": "en",
+          "gold": [
+            "SHP-004#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-004#w0",
+            "SHP-005#w0",
+            "SHP-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R22",
+          "language": "en",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-005#w0",
+            "PRD-010#w1",
+            "SHP-001#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R23",
+          "language": "en",
+          "gold": [
+            "SOP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#w0",
+            "SOP-001#w1",
+            "POL-008#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R24",
+          "language": "en",
+          "gold": [
+            "SOP-001#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#w1",
+            "SOP-001#w0",
+            "POL-008#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R25",
+          "language": "en",
+          "gold": [
+            "SOP-002#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-002#w0",
+            "PRD-009#w0",
+            "SHP-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R26",
+          "language": "en",
+          "gold": [
+            "WAR-001#§2",
+            "WAR-001#§3"
+          ],
+          "rank": 6,
+          "top_3": [
+            "SOP-002#w0",
+            "WAR-003#w0",
+            "POL-002#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R27",
+          "language": "en",
+          "gold": [
+            "WAR-002#§3",
+            "PRD-007#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-002#w1",
+            "PRD-007#w0",
+            "PRD-007#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R28",
+          "language": "en",
+          "gold": [
+            "WAR-003#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#w0",
+            "PRD-010#w1",
+            "PRD-001#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R29",
+          "language": "en",
+          "gold": [
+            "WAR-004#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-004#w1",
+            "WAR-004#w0",
+            "PRD-005#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R30",
+          "language": "en",
+          "gold": [
+            "WAR-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-005#w0",
+            "PRD-008#w0",
+            "WAR-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R31",
+          "language": "en",
+          "gold": [
+            "PRD-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-002#w0",
+            "PRD-009#w1",
+            "PRD-002#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R32",
+          "language": "en",
+          "gold": [
+            "PRD-008#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-008#w0",
+            "WAR-005#w0",
+            "WAR-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R33",
+          "language": "en",
+          "gold": [
+            "PRD-010#§2",
+            "PRD-010#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-010#w0",
+            "PRD-010#w1",
+            "PRD-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R34",
+          "language": "tr",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#w0",
+            "SHP-001#w1",
+            "SHP-003#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R35",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§2"
+          ],
+          "rank": 5,
+          "top_3": [
+            "PRD-004#w0",
+            "PRD-007#w0",
+            "SHP-003#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R36",
+          "language": "tr",
+          "gold": [
+            "POL-002#§1",
+            "POL-002#§6",
+            "POL-001#§1"
+          ],
+          "rank": 9,
+          "top_3": [
+            "PRD-004#w0",
+            "PRD-007#w0",
+            "PRD-010#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R37",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2",
+            "SHP-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w2",
+            "POL-005#w2",
+            "PRD-004#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R38",
+          "language": "tr",
+          "gold": [
+            "POL-007#§4",
+            "POL-008#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-010#w1",
+            "PRD-010#w0",
+            "PRD-004#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R39",
+          "language": "tr",
+          "gold": [
+            "PRD-003#§3",
+            "PRD-003#§4",
+            "PRD-009#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-003#w0",
+            "PRD-003#w1",
+            "PRD-010#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R40",
+          "language": "tr",
+          "gold": [
+            "WAR-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#w0",
+            "WAR-003#w1",
+            "WAR-001#w2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D01",
+          "language": "tr",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-004#w0",
+            "PRD-007#w0",
+            "PRD-010#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D02",
+          "language": "tr",
+          "gold": [
+            "POL-002#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-010#w0",
+            "PRD-004#w0",
+            "PRD-007#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D03",
+          "language": "tr",
+          "gold": [
+            "POL-003#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-010#w1",
+            "PRD-010#w0",
+            "PRD-004#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D04",
+          "language": "tr",
+          "gold": [
+            "POL-004#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-010#w1",
+            "PRD-010#w0",
+            "PRD-004#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D05",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2"
+          ],
+          "rank": 10,
+          "top_3": [
+            "PRD-004#w0",
+            "PRD-007#w0",
+            "PRD-010#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D06",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-001#w0",
+            "PRD-002#w0",
+            "PRD-003#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D07",
+          "language": "tr",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-001#w0",
+            "PRD-002#w0",
+            "PRD-003#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D08",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "POL-003#w0",
+            "POL-003#w2",
+            "POL-002#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D09",
+          "language": "en",
+          "gold": [
+            "POL-005#§3"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-003#w0",
+            "POL-005#w0",
+            "POL-006#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D10",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-004#w2",
+            "SHP-003#w1",
+            "POL-004#w1"
+          ],
+          "style": "paraphrase"
+        }
+      ],
+      "seconds": 0.01,
+      "ci95": {
+        "hit_at_5": [
+          0.6416,
+          0.8784
+        ],
+        "mrr": [
+          0.5554,
+          0.791
+        ]
+      },
+      "hit_at_5_by_style": {
+        "keyword": {
+          "value": 1.0,
+          "n": 12
+        },
+        "paraphrase": {
+          "value": 0.875,
+          "n": 24
+        },
+        "turkish": {
+          "value": 0.357,
+          "n": 14
+        }
+      }
+    },
+    "dense/section": {
+      "overall": {
+        "n": 50,
+        "hit_at_1": 0.54,
+        "hit_at_3": 0.78,
+        "hit_at_5": 0.9,
+        "hit_at_10": 0.98,
+        "mrr": 0.683
+      },
+      "by_language": {
+        "en": {
+          "n": 36,
+          "hit_at_1": 0.556,
+          "hit_at_3": 0.778,
+          "hit_at_5": 0.889,
+          "hit_at_10": 0.972,
+          "mrr": 0.689
+        },
+        "tr": {
+          "n": 14,
+          "hit_at_1": 0.5,
+          "hit_at_3": 0.786,
+          "hit_at_5": 0.929,
+          "hit_at_10": 1.0,
+          "mrr": 0.668
+        }
+      },
+      "per_question": [
+        {
+          "id": "W3-R01",
+          "language": "en",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 3,
+          "top_3": [
+            "POL-001#§2",
+            "POL-008#§1",
+            "POL-001#§1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R02",
+          "language": "en",
+          "gold": [
+            "POL-002#§2",
+            "POL-002#§6"
+          ],
+          "rank": 2,
+          "top_3": [
+            "SHP-003#§4",
+            "POL-002#§2",
+            "PRD-003#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R03",
+          "language": "en",
+          "gold": [
+            "POL-002#§4"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-002#§1",
+            "POL-002#§4",
+            "POL-002#§6"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R04",
+          "language": "en",
+          "gold": [
+            "POL-003#§2",
+            "POL-003#§6"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-004#§4",
+            "POL-003#§2",
+            "PRD-007#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R05",
+          "language": "en",
+          "gold": [
+            "POL-003#§5",
+            "POL-003#§6"
+          ],
+          "rank": 10,
+          "top_3": [
+            "WAR-004#§2",
+            "WAR-004#§3",
+            "WAR-004#§6"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R06",
+          "language": "en",
+          "gold": [
+            "POL-004#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#§1",
+            "POL-004#§3",
+            "POL-004#§2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R07",
+          "language": "en",
+          "gold": [
+            "POL-004#§4",
+            "POL-004#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#§6",
+            "POL-001#§3",
+            "POL-001#§6"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R08",
+          "language": "en",
+          "gold": [
+            "POL-005#§3",
+            "POL-005#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#§3",
+            "POL-005#§2",
+            "SHP-002#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R09",
+          "language": "en",
+          "gold": [
+            "POL-005#§4"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-009#§5",
+            "POL-005#§4",
+            "POL-005#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R10",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#§1",
+            "POL-006#§5",
+            "POL-001#§5"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R11",
+          "language": "en",
+          "gold": [
+            "POL-006#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#§2",
+            "POL-008#§1",
+            "POL-006#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R12",
+          "language": "en",
+          "gold": [
+            "POL-007#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#§1",
+            "PRD-004#§4",
+            "PRD-004#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R13",
+          "language": "en",
+          "gold": [
+            "POL-007#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#§3",
+            "POL-001#§1",
+            "SHP-003#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R14",
+          "language": "en",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 5,
+          "top_3": [
+            "POL-008#§1",
+            "POL-008#§3",
+            "POL-001#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R15",
+          "language": "en",
+          "gold": [
+            "POL-008#§5"
+          ],
+          "rank": 5,
+          "top_3": [
+            "POL-007#§5",
+            "POL-008#§3",
+            "POL-007#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R16",
+          "language": "en",
+          "gold": [
+            "SHP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#§2",
+            "SHP-001#§3",
+            "SHP-004#§1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R17",
+          "language": "en",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#§4",
+            "SHP-005#§2",
+            "SHP-002#§2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R18",
+          "language": "en",
+          "gold": [
+            "SHP-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-002#§2",
+            "SHP-002#§3",
+            "SHP-001#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R19",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§5",
+            "SHP-004#§2",
+            "SHP-003#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R20",
+          "language": "en",
+          "gold": [
+            "SHP-003#§4"
+          ],
+          "rank": 4,
+          "top_3": [
+            "SHP-003#§3",
+            "SHP-003#§5",
+            "POL-004#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R21",
+          "language": "en",
+          "gold": [
+            "SHP-004#§2"
+          ],
+          "rank": 6,
+          "top_3": [
+            "SHP-004#§1",
+            "SHP-004#§3",
+            "SHP-005#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R22",
+          "language": "en",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-005#§1",
+            "SHP-001#§1",
+            "SHP-005#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R23",
+          "language": "en",
+          "gold": [
+            "SOP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#§2",
+            "POL-007#§1",
+            "SOP-001#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R24",
+          "language": "en",
+          "gold": [
+            "SOP-001#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#§5",
+            "SOP-001#§1",
+            "SOP-001#§2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R25",
+          "language": "en",
+          "gold": [
+            "SOP-002#§3"
+          ],
+          "rank": 3,
+          "top_3": [
+            "PRD-007#§1",
+            "SOP-002#§1",
+            "SOP-002#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R26",
+          "language": "en",
+          "gold": [
+            "WAR-001#§2",
+            "WAR-001#§3"
+          ],
+          "rank": null,
+          "top_3": [
+            "POL-002#§6",
+            "POL-002#§2",
+            "PRD-003#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R27",
+          "language": "en",
+          "gold": [
+            "WAR-002#§3",
+            "PRD-007#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-007#§4",
+            "PRD-007#§5",
+            "PRD-007#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R28",
+          "language": "en",
+          "gold": [
+            "WAR-003#§3"
+          ],
+          "rank": 3,
+          "top_3": [
+            "PRD-001#§6",
+            "PRD-001#§2",
+            "WAR-003#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R29",
+          "language": "en",
+          "gold": [
+            "WAR-004#§3"
+          ],
+          "rank": 8,
+          "top_3": [
+            "PRD-006#§2",
+            "PRD-006#§4",
+            "WAR-004#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R30",
+          "language": "en",
+          "gold": [
+            "WAR-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-005#§3",
+            "WAR-005#§2",
+            "PRD-008#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R31",
+          "language": "en",
+          "gold": [
+            "PRD-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-002#§2",
+            "PRD-002#§4",
+            "PRD-002#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R32",
+          "language": "en",
+          "gold": [
+            "PRD-008#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-008#§4",
+            "PRD-008#§2",
+            "PRD-008#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R33",
+          "language": "en",
+          "gold": [
+            "PRD-010#§2",
+            "PRD-010#§5"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-004#§3",
+            "PRD-010#§5",
+            "PRD-010#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R34",
+          "language": "tr",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#§4",
+            "SHP-001#§1",
+            "SHP-002#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R35",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-005#§2",
+            "SHP-005#§1",
+            "SHP-005#§4"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R36",
+          "language": "tr",
+          "gold": [
+            "POL-002#§1",
+            "POL-002#§6",
+            "POL-001#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#§6",
+            "POL-002#§1",
+            "PRD-003#§1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R37",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2",
+            "SHP-003#§6"
+          ],
+          "rank": 2,
+          "top_3": [
+            "SHP-001#§3",
+            "SHP-003#§6",
+            "SHP-001#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R38",
+          "language": "tr",
+          "gold": [
+            "POL-007#§4",
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#§4",
+            "POL-007#§5",
+            "POL-007#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R39",
+          "language": "tr",
+          "gold": [
+            "PRD-003#§3",
+            "PRD-003#§4",
+            "PRD-009#§3"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-003#§6",
+            "PRD-003#§3",
+            "PRD-003#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R40",
+          "language": "tr",
+          "gold": [
+            "WAR-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#§2",
+            "WAR-003#§3",
+            "WAR-003#§5"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D01",
+          "language": "tr",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-001#§1",
+            "POL-002#§6",
+            "POL-001#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D02",
+          "language": "tr",
+          "gold": [
+            "POL-002#§2"
+          ],
+          "rank": 5,
+          "top_3": [
+            "POL-002#§1",
+            "POL-002#§6",
+            "PRD-008#§4"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D03",
+          "language": "tr",
+          "gold": [
+            "POL-003#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "WAR-004#§6",
+            "POL-003#§2",
+            "WAR-004#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D04",
+          "language": "tr",
+          "gold": [
+            "POL-004#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#§2",
+            "POL-002#§1",
+            "POL-002#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D05",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2"
+          ],
+          "rank": 8,
+          "top_3": [
+            "SHP-001#§3",
+            "SHP-001#§2",
+            "SHP-003#§6"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D06",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 5,
+          "top_3": [
+            "SHP-005#§4",
+            "SHP-001#§1",
+            "SHP-002#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D07",
+          "language": "tr",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 3,
+          "top_3": [
+            "POL-008#§4",
+            "POL-007#§3",
+            "POL-008#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D08",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 4,
+          "top_3": [
+            "POL-004#§3",
+            "SHP-003#§3",
+            "WAR-001#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D09",
+          "language": "en",
+          "gold": [
+            "POL-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#§3",
+            "SHP-004#§3",
+            "POL-001#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D10",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§5",
+            "SHP-003#§3",
+            "SHP-001#§5"
+          ],
+          "style": "paraphrase"
+        }
+      ],
+      "seconds": 6.57,
+      "ci95": {
+        "hit_at_5": [
+          0.8168,
+          0.9832
+        ],
+        "mrr": [
+          0.5822,
+          0.7838
+        ]
+      },
+      "hit_at_5_by_style": {
+        "keyword": {
+          "value": 1.0,
+          "n": 12
+        },
+        "paraphrase": {
+          "value": 0.833,
+          "n": 24
+        },
+        "turkish": {
+          "value": 0.929,
+          "n": 14
+        }
+      }
+    },
+    "dense/window": {
+      "overall": {
+        "n": 50,
+        "hit_at_1": 0.66,
+        "hit_at_3": 0.86,
+        "hit_at_5": 0.94,
+        "hit_at_10": 1.0,
+        "mrr": 0.775
+      },
+      "by_language": {
+        "en": {
+          "n": 36,
+          "hit_at_1": 0.667,
+          "hit_at_3": 0.889,
+          "hit_at_5": 0.944,
+          "hit_at_10": 1.0,
+          "mrr": 0.781
+        },
+        "tr": {
+          "n": 14,
+          "hit_at_1": 0.643,
+          "hit_at_3": 0.786,
+          "hit_at_5": 0.929,
+          "hit_at_10": 1.0,
+          "mrr": 0.76
+        }
+      },
+      "per_question": [
+        {
+          "id": "W3-R01",
+          "language": "en",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-001#w0",
+            "POL-008#w0",
+            "POL-001#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R02",
+          "language": "en",
+          "gold": [
+            "POL-002#§2",
+            "POL-002#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w0",
+            "SHP-003#w1",
+            "POL-007#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R03",
+          "language": "en",
+          "gold": [
+            "POL-002#§4"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-002#w0",
+            "POL-002#w2",
+            "POL-002#w3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R04",
+          "language": "en",
+          "gold": [
+            "POL-003#§2",
+            "POL-003#§6"
+          ],
+          "rank": 3,
+          "top_3": [
+            "PRD-004#w1",
+            "PRD-007#w1",
+            "POL-003#w2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R05",
+          "language": "en",
+          "gold": [
+            "POL-003#§5",
+            "POL-003#§6"
+          ],
+          "rank": 3,
+          "top_3": [
+            "WAR-004#w0",
+            "WAR-004#w1",
+            "POL-003#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R06",
+          "language": "en",
+          "gold": [
+            "POL-004#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#w0",
+            "POL-007#w0",
+            "SHP-003#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R07",
+          "language": "en",
+          "gold": [
+            "POL-004#§4",
+            "POL-004#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#w2",
+            "POL-001#w1",
+            "POL-001#w2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R08",
+          "language": "en",
+          "gold": [
+            "POL-005#§3",
+            "POL-005#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#w1",
+            "POL-005#w0",
+            "SHP-002#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R09",
+          "language": "en",
+          "gold": [
+            "POL-005#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#w1",
+            "POL-001#w2",
+            "PRD-001#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R10",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#w0",
+            "POL-006#w1",
+            "POL-006#w2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R11",
+          "language": "en",
+          "gold": [
+            "POL-006#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#w0",
+            "POL-001#w2",
+            "POL-008#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R12",
+          "language": "en",
+          "gold": [
+            "POL-007#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#w0",
+            "PRD-004#w1",
+            "PRD-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R13",
+          "language": "en",
+          "gold": [
+            "POL-007#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#w1",
+            "POL-001#w0",
+            "SHP-003#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R14",
+          "language": "en",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-008#w0",
+            "POL-008#w1",
+            "POL-001#w2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R15",
+          "language": "en",
+          "gold": [
+            "POL-008#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-008#w1",
+            "POL-007#w1",
+            "POL-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R16",
+          "language": "en",
+          "gold": [
+            "SHP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#w0",
+            "SHP-001#w1",
+            "SHP-004#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R17",
+          "language": "en",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#w0",
+            "SHP-005#w0",
+            "SHP-002#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R18",
+          "language": "en",
+          "gold": [
+            "SHP-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-002#w0",
+            "SHP-001#w0",
+            "SHP-005#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R19",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 4,
+          "top_3": [
+            "POL-006#w1",
+            "POL-006#w0",
+            "SHP-001#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R20",
+          "language": "en",
+          "gold": [
+            "SHP-003#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w1",
+            "POL-006#w1",
+            "POL-001#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R21",
+          "language": "en",
+          "gold": [
+            "SHP-004#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-004#w0",
+            "SHP-001#w0",
+            "POL-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R22",
+          "language": "en",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 2,
+          "top_3": [
+            "SHP-005#w1",
+            "SHP-005#w0",
+            "SHP-001#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R23",
+          "language": "en",
+          "gold": [
+            "SOP-001#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-007#w0",
+            "SOP-001#w0",
+            "POL-008#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R24",
+          "language": "en",
+          "gold": [
+            "SOP-001#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#w1",
+            "SOP-001#w0",
+            "POL-001#w2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R25",
+          "language": "en",
+          "gold": [
+            "SOP-002#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-002#w0",
+            "PRD-003#w1",
+            "PRD-007#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R26",
+          "language": "en",
+          "gold": [
+            "WAR-001#§2",
+            "WAR-001#§3"
+          ],
+          "rank": 6,
+          "top_3": [
+            "POL-002#w0",
+            "POL-002#w3",
+            "PRD-003#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R27",
+          "language": "en",
+          "gold": [
+            "WAR-002#§3",
+            "PRD-007#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-007#w1",
+            "WAR-002#w0",
+            "WAR-002#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R28",
+          "language": "en",
+          "gold": [
+            "WAR-003#§3"
+          ],
+          "rank": 3,
+          "top_3": [
+            "PRD-005#w1",
+            "PRD-001#w1",
+            "WAR-003#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R29",
+          "language": "en",
+          "gold": [
+            "WAR-004#§3"
+          ],
+          "rank": 3,
+          "top_3": [
+            "PRD-006#w0",
+            "PRD-006#w1",
+            "WAR-004#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R30",
+          "language": "en",
+          "gold": [
+            "WAR-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-005#w0",
+            "PRD-008#w1",
+            "WAR-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R31",
+          "language": "en",
+          "gold": [
+            "PRD-002#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-002#w1",
+            "PRD-002#w0",
+            "PRD-001#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R32",
+          "language": "en",
+          "gold": [
+            "PRD-008#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-008#w0",
+            "WAR-005#w0",
+            "WAR-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R33",
+          "language": "en",
+          "gold": [
+            "PRD-010#§2",
+            "PRD-010#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-010#w1",
+            "PRD-010#w0",
+            "PRD-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R34",
+          "language": "tr",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#w1",
+            "SHP-001#w0",
+            "SHP-003#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R35",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-005#w0",
+            "SHP-005#w1",
+            "SHP-001#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R36",
+          "language": "tr",
+          "gold": [
+            "POL-002#§1",
+            "POL-002#§6",
+            "POL-001#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w3",
+            "POL-002#w0",
+            "POL-002#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R37",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2",
+            "SHP-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w0",
+            "SHP-003#w2",
+            "SHP-001#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R38",
+          "language": "tr",
+          "gold": [
+            "POL-007#§4",
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#w1",
+            "POL-008#w1",
+            "POL-007#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R39",
+          "language": "tr",
+          "gold": [
+            "PRD-003#§3",
+            "PRD-003#§4",
+            "PRD-009#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-003#w1",
+            "PRD-009#w1",
+            "PRD-003#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R40",
+          "language": "tr",
+          "gold": [
+            "WAR-003#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "WAR-003#w1",
+            "WAR-003#w0",
+            "WAR-001#w2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D01",
+          "language": "tr",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-001#w1",
+            "POL-001#w0",
+            "POL-002#w3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D02",
+          "language": "tr",
+          "gold": [
+            "POL-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w0",
+            "POL-002#w3",
+            "POL-002#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D03",
+          "language": "tr",
+          "gold": [
+            "POL-003#§2"
+          ],
+          "rank": 4,
+          "top_3": [
+            "WAR-004#w1",
+            "POL-003#w2",
+            "WAR-004#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D04",
+          "language": "tr",
+          "gold": [
+            "POL-004#§2"
+          ],
+          "rank": 7,
+          "top_3": [
+            "POL-002#w0",
+            "PRD-004#w1",
+            "POL-007#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D05",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w0",
+            "SHP-003#w2",
+            "SHP-001#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D06",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 4,
+          "top_3": [
+            "SHP-005#w1",
+            "SHP-001#w0",
+            "SHP-002#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D07",
+          "language": "tr",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-008#w1",
+            "POL-007#w1",
+            "POL-008#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D08",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 9,
+          "top_3": [
+            "POL-007#w1",
+            "POL-006#w2",
+            "SHP-003#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D09",
+          "language": "en",
+          "gold": [
+            "POL-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#w1",
+            "POL-001#w2",
+            "POL-005#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D10",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 4,
+          "top_3": [
+            "SHP-001#w1",
+            "POL-007#w1",
+            "PRD-006#w1"
+          ],
+          "style": "paraphrase"
+        }
+      ],
+      "seconds": 0.39,
+      "ci95": {
+        "hit_at_5": [
+          0.8742,
+          1.0
+        ],
+        "mrr": [
+          0.6846,
+          0.8655
+        ]
+      },
+      "hit_at_5_by_style": {
+        "keyword": {
+          "value": 1.0,
+          "n": 12
+        },
+        "paraphrase": {
+          "value": 0.917,
+          "n": 24
+        },
+        "turkish": {
+          "value": 0.929,
+          "n": 14
+        }
+      }
+    },
+    "hybrid/section": {
+      "overall": {
+        "n": 50,
+        "hit_at_1": 0.5,
+        "hit_at_3": 0.7,
+        "hit_at_5": 0.82,
+        "hit_at_10": 0.94,
+        "mrr": 0.638
+      },
+      "by_language": {
+        "en": {
+          "n": 36,
+          "hit_at_1": 0.611,
+          "hit_at_3": 0.778,
+          "hit_at_5": 0.861,
+          "hit_at_10": 0.944,
+          "mrr": 0.722
+        },
+        "tr": {
+          "n": 14,
+          "hit_at_1": 0.214,
+          "hit_at_3": 0.5,
+          "hit_at_5": 0.714,
+          "hit_at_10": 0.929,
+          "mrr": 0.423
+        }
+      },
+      "per_question": [
+        {
+          "id": "W3-R01",
+          "language": "en",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-001#§2",
+            "POL-001#§1",
+            "SHP-003#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R02",
+          "language": "en",
+          "gold": [
+            "POL-002#§2",
+            "POL-002#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#§6",
+            "POL-002#§1",
+            "SHP-003#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R03",
+          "language": "en",
+          "gold": [
+            "POL-002#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#§4",
+            "POL-002#§6",
+            "POL-002#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R04",
+          "language": "en",
+          "gold": [
+            "POL-003#§2",
+            "POL-003#§6"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-004#§4",
+            "POL-003#§6",
+            "POL-003#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R05",
+          "language": "en",
+          "gold": [
+            "POL-003#§5",
+            "POL-003#§6"
+          ],
+          "rank": 10,
+          "top_3": [
+            "POL-003#§3",
+            "WAR-004#§2",
+            "POL-001#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R06",
+          "language": "en",
+          "gold": [
+            "POL-004#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#§1",
+            "POL-004#§3",
+            "POL-004#§5"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R07",
+          "language": "en",
+          "gold": [
+            "POL-004#§4",
+            "POL-004#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#§6",
+            "POL-001#§6",
+            "POL-001#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R08",
+          "language": "en",
+          "gold": [
+            "POL-005#§3",
+            "POL-005#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#§3",
+            "POL-005#§2",
+            "POL-005#§6"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R09",
+          "language": "en",
+          "gold": [
+            "POL-005#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#§4",
+            "POL-001#§4",
+            "PRD-009#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R10",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 4,
+          "top_3": [
+            "POL-004#§3",
+            "POL-001#§5",
+            "WAR-001#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R11",
+          "language": "en",
+          "gold": [
+            "POL-006#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#§2",
+            "POL-008#§1",
+            "WAR-001#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R12",
+          "language": "en",
+          "gold": [
+            "POL-007#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#§1",
+            "PRD-004#§1",
+            "PRD-004#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R13",
+          "language": "en",
+          "gold": [
+            "POL-007#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#§3",
+            "SHP-003#§4",
+            "POL-001#§1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R14",
+          "language": "en",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-008#§1",
+            "POL-008#§2",
+            "POL-008#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R15",
+          "language": "en",
+          "gold": [
+            "POL-008#§5"
+          ],
+          "rank": 6,
+          "top_3": [
+            "POL-007#§4",
+            "POL-007#§5",
+            "POL-008#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R16",
+          "language": "en",
+          "gold": [
+            "SHP-001#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "SHP-001#§3",
+            "SHP-004#§1",
+            "SHP-002#§1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R17",
+          "language": "en",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#§4",
+            "SHP-002#§2",
+            "SHP-005#§2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R18",
+          "language": "en",
+          "gold": [
+            "SHP-002#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "SHP-002#§3",
+            "SHP-002#§2",
+            "SHP-002#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R19",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§5",
+            "SHP-004#§2",
+            "SHP-003#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R20",
+          "language": "en",
+          "gold": [
+            "SHP-003#§4"
+          ],
+          "rank": 4,
+          "top_3": [
+            "SHP-003#§3",
+            "SHP-003#§5",
+            "SHP-003#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R21",
+          "language": "en",
+          "gold": [
+            "SHP-004#§2"
+          ],
+          "rank": 4,
+          "top_3": [
+            "SHP-004#§1",
+            "SHP-004#§3",
+            "SHP-005#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R22",
+          "language": "en",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-005#§1",
+            "SHP-001#§1",
+            "SHP-005#§2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R23",
+          "language": "en",
+          "gold": [
+            "SOP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#§2",
+            "SOP-001#§3",
+            "SOP-001#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R24",
+          "language": "en",
+          "gold": [
+            "SOP-001#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#§5",
+            "SOP-001#§2",
+            "SOP-001#§1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R25",
+          "language": "en",
+          "gold": [
+            "SOP-002#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-002#§3",
+            "SOP-002#§1",
+            "SOP-002#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R26",
+          "language": "en",
+          "gold": [
+            "WAR-001#§2",
+            "WAR-001#§3"
+          ],
+          "rank": null,
+          "top_3": [
+            "POL-002#§3",
+            "PRD-003#§1",
+            "POL-007#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R27",
+          "language": "en",
+          "gold": [
+            "WAR-002#§3",
+            "PRD-007#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-007#§4",
+            "PRD-007#§1",
+            "WAR-002#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R28",
+          "language": "en",
+          "gold": [
+            "WAR-003#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#§3",
+            "PRD-001#§6",
+            "PRD-001#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R29",
+          "language": "en",
+          "gold": [
+            "WAR-004#§3"
+          ],
+          "rank": 3,
+          "top_3": [
+            "WAR-004#§5",
+            "PRD-006#§2",
+            "WAR-004#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R30",
+          "language": "en",
+          "gold": [
+            "WAR-005#§3"
+          ],
+          "rank": 2,
+          "top_3": [
+            "WAR-005#§2",
+            "WAR-005#§3",
+            "PRD-008#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R31",
+          "language": "en",
+          "gold": [
+            "PRD-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-002#§2",
+            "PRD-002#§4",
+            "PRD-002#§6"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R32",
+          "language": "en",
+          "gold": [
+            "PRD-008#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-008#§4",
+            "PRD-008#§2",
+            "PRD-008#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R33",
+          "language": "en",
+          "gold": [
+            "PRD-010#§2",
+            "PRD-010#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-010#§5",
+            "PRD-004#§3",
+            "PRD-010#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R34",
+          "language": "tr",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#§4",
+            "SHP-001#§1",
+            "SHP-001#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R35",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§2"
+          ],
+          "rank": 7,
+          "top_3": [
+            "SHP-005#§4",
+            "SHP-003#§3",
+            "SHP-001#§1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R36",
+          "language": "tr",
+          "gold": [
+            "POL-002#§1",
+            "POL-002#§6",
+            "POL-001#§1"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-003#§2",
+            "POL-002#§6",
+            "PRD-009#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R37",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2",
+            "SHP-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§6",
+            "SHP-003#§1",
+            "SHP-003#§5"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R38",
+          "language": "tr",
+          "gold": [
+            "POL-007#§4",
+            "POL-008#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-010#§5",
+            "POL-007#§4",
+            "PRD-010#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R39",
+          "language": "tr",
+          "gold": [
+            "PRD-003#§3",
+            "PRD-003#§4",
+            "PRD-009#§3"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-003#§6",
+            "PRD-003#§3",
+            "PRD-003#§4"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R40",
+          "language": "tr",
+          "gold": [
+            "WAR-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#§2",
+            "WAR-003#§1",
+            "WAR-003#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D01",
+          "language": "tr",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 4,
+          "top_3": [
+            "POL-002#§1",
+            "WAR-003#§3",
+            "PRD-004#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D02",
+          "language": "tr",
+          "gold": [
+            "POL-002#§2"
+          ],
+          "rank": 10,
+          "top_3": [
+            "PRD-010#§3",
+            "PRD-010#§5",
+            "PRD-010#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D03",
+          "language": "tr",
+          "gold": [
+            "POL-003#§2"
+          ],
+          "rank": 4,
+          "top_3": [
+            "PRD-010#§5",
+            "WAR-004#§6",
+            "PRD-010#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D04",
+          "language": "tr",
+          "gold": [
+            "POL-004#§2"
+          ],
+          "rank": 5,
+          "top_3": [
+            "PRD-010#§2",
+            "PRD-010#§3",
+            "PRD-004#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D05",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2"
+          ],
+          "rank": 3,
+          "top_3": [
+            "SHP-003#§1",
+            "SHP-003#§6",
+            "SHP-003#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D06",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-002#§2",
+            "PRD-003#§2",
+            "PRD-008#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D07",
+          "language": "tr",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 7,
+          "top_3": [
+            "PRD-005#§2",
+            "PRD-008#§2",
+            "POL-008#§4"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D08",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 8,
+          "top_3": [
+            "SHP-003#§3",
+            "WAR-001#§4",
+            "POL-003#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D09",
+          "language": "en",
+          "gold": [
+            "POL-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#§3",
+            "POL-005#§6",
+            "SHP-004#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D10",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§5",
+            "SHP-001#§5",
+            "POL-004#§6"
+          ],
+          "style": "paraphrase"
+        }
+      ],
+      "seconds": 0.52,
+      "ci95": {
+        "hit_at_5": [
+          0.7135,
+          0.9265
+        ],
+        "mrr": [
+          0.5306,
+          0.7451
+        ]
+      },
+      "hit_at_5_by_style": {
+        "keyword": {
+          "value": 0.917,
+          "n": 12
+        },
+        "paraphrase": {
+          "value": 0.833,
+          "n": 24
+        },
+        "turkish": {
+          "value": 0.714,
+          "n": 14
+        }
+      }
+    },
+    "hybrid/window": {
+      "overall": {
+        "n": 50,
+        "hit_at_1": 0.76,
+        "hit_at_3": 0.86,
+        "hit_at_5": 0.92,
+        "hit_at_10": 0.98,
+        "mrr": 0.82
+      },
+      "by_language": {
+        "en": {
+          "n": 36,
+          "hit_at_1": 0.889,
+          "hit_at_3": 0.944,
+          "hit_at_5": 1.0,
+          "hit_at_10": 1.0,
+          "mrr": 0.925
+        },
+        "tr": {
+          "n": 14,
+          "hit_at_1": 0.429,
+          "hit_at_3": 0.643,
+          "hit_at_5": 0.714,
+          "hit_at_10": 0.929,
+          "mrr": 0.551
+        }
+      },
+      "per_question": [
+        {
+          "id": "W3-R01",
+          "language": "en",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-001#w0",
+            "POL-001#w1",
+            "POL-008#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R02",
+          "language": "en",
+          "gold": [
+            "POL-002#§2",
+            "POL-002#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w0",
+            "POL-002#w3",
+            "SHP-003#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R03",
+          "language": "en",
+          "gold": [
+            "POL-002#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w2",
+            "POL-002#w1",
+            "POL-002#w3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R04",
+          "language": "en",
+          "gold": [
+            "POL-003#§2",
+            "POL-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-003#w2",
+            "PRD-004#w1",
+            "POL-003#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R05",
+          "language": "en",
+          "gold": [
+            "POL-003#§5",
+            "POL-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-003#w2",
+            "POL-003#w1",
+            "WAR-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R06",
+          "language": "en",
+          "gold": [
+            "POL-004#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#w0",
+            "POL-008#w1",
+            "POL-004#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R07",
+          "language": "en",
+          "gold": [
+            "POL-004#§4",
+            "POL-004#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#w2",
+            "POL-001#w2",
+            "POL-004#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R08",
+          "language": "en",
+          "gold": [
+            "POL-005#§3",
+            "POL-005#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#w1",
+            "POL-005#w0",
+            "POL-005#w2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R09",
+          "language": "en",
+          "gold": [
+            "POL-005#§4"
+          ],
+          "rank": 5,
+          "top_3": [
+            "SHP-003#w0",
+            "POL-001#w2",
+            "POL-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R10",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#w0",
+            "POL-001#w2",
+            "POL-006#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R11",
+          "language": "en",
+          "gold": [
+            "POL-006#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#w0",
+            "WAR-001#w1",
+            "SHP-003#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R12",
+          "language": "en",
+          "gold": [
+            "POL-007#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#w0",
+            "PRD-004#w0",
+            "PRD-004#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R13",
+          "language": "en",
+          "gold": [
+            "POL-007#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#w1",
+            "POL-008#w1",
+            "SHP-003#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R14",
+          "language": "en",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-008#w0",
+            "POL-008#w1",
+            "POL-007#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R15",
+          "language": "en",
+          "gold": [
+            "POL-008#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-008#w1",
+            "POL-007#w1",
+            "POL-008#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R16",
+          "language": "en",
+          "gold": [
+            "SHP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#w0",
+            "SHP-002#w0",
+            "SHP-004#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R17",
+          "language": "en",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#w0",
+            "SHP-002#w0",
+            "POL-005#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R18",
+          "language": "en",
+          "gold": [
+            "SHP-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-002#w0",
+            "SHP-005#w0",
+            "SHP-003#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R19",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w1",
+            "SHP-001#w0",
+            "POL-006#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R20",
+          "language": "en",
+          "gold": [
+            "SHP-003#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w1",
+            "SHP-003#w0",
+            "SHP-003#w2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R21",
+          "language": "en",
+          "gold": [
+            "SHP-004#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-004#w0",
+            "SHP-005#w1",
+            "SHP-005#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R22",
+          "language": "en",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-005#w0",
+            "SHP-001#w0",
+            "POL-006#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R23",
+          "language": "en",
+          "gold": [
+            "SOP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#w0",
+            "SOP-001#w1",
+            "POL-008#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R24",
+          "language": "en",
+          "gold": [
+            "SOP-001#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#w1",
+            "SOP-001#w0",
+            "POL-008#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R25",
+          "language": "en",
+          "gold": [
+            "SOP-002#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-002#w0",
+            "POL-002#w0",
+            "PRD-009#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R26",
+          "language": "en",
+          "gold": [
+            "WAR-001#§2",
+            "WAR-001#§3"
+          ],
+          "rank": 3,
+          "top_3": [
+            "POL-002#w1",
+            "POL-007#w1",
+            "WAR-001#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R27",
+          "language": "en",
+          "gold": [
+            "WAR-002#§3",
+            "PRD-007#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-002#w1",
+            "PRD-007#w1",
+            "PRD-007#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R28",
+          "language": "en",
+          "gold": [
+            "WAR-003#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#w0",
+            "WAR-003#w1",
+            "PRD-001#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R29",
+          "language": "en",
+          "gold": [
+            "WAR-004#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-004#w1",
+            "PRD-006#w0",
+            "WAR-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R30",
+          "language": "en",
+          "gold": [
+            "WAR-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-005#w0",
+            "PRD-008#w0",
+            "WAR-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R31",
+          "language": "en",
+          "gold": [
+            "PRD-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-002#w0",
+            "PRD-002#w1",
+            "PRD-001#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R32",
+          "language": "en",
+          "gold": [
+            "PRD-008#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-008#w0",
+            "WAR-005#w0",
+            "WAR-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R33",
+          "language": "en",
+          "gold": [
+            "PRD-010#§2",
+            "PRD-010#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-010#w0",
+            "PRD-010#w1",
+            "PRD-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R34",
+          "language": "tr",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#w0",
+            "SHP-001#w1",
+            "SHP-003#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R35",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-005#w0",
+            "SHP-005#w1",
+            "SHP-003#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R36",
+          "language": "tr",
+          "gold": [
+            "POL-002#§1",
+            "POL-002#§6",
+            "POL-001#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w3",
+            "PRD-009#w0",
+            "PRD-009#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R37",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2",
+            "SHP-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w2",
+            "SHP-001#w0",
+            "SHP-003#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R38",
+          "language": "tr",
+          "gold": [
+            "POL-007#§4",
+            "POL-008#§2"
+          ],
+          "rank": 3,
+          "top_3": [
+            "POL-005#w2",
+            "PRD-010#w1",
+            "POL-007#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R39",
+          "language": "tr",
+          "gold": [
+            "PRD-003#§3",
+            "PRD-003#§4",
+            "PRD-009#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-003#w1",
+            "PRD-003#w0",
+            "PRD-009#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R40",
+          "language": "tr",
+          "gold": [
+            "WAR-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#w0",
+            "WAR-003#w1",
+            "WAR-001#w2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D01",
+          "language": "tr",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 10,
+          "top_3": [
+            "WAR-003#w1",
+            "SHP-001#w0",
+            "POL-002#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D02",
+          "language": "tr",
+          "gold": [
+            "POL-002#§2"
+          ],
+          "rank": 5,
+          "top_3": [
+            "PRD-004#w0",
+            "PRD-007#w0",
+            "PRD-010#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D03",
+          "language": "tr",
+          "gold": [
+            "POL-003#§2"
+          ],
+          "rank": 8,
+          "top_3": [
+            "PRD-010#w1",
+            "WAR-004#w1",
+            "PRD-010#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D04",
+          "language": "tr",
+          "gold": [
+            "POL-004#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "PRD-007#w0",
+            "PRD-010#w1",
+            "POL-002#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D05",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "SHP-003#w2",
+            "SHP-003#w0",
+            "SHP-001#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D06",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 8,
+          "top_3": [
+            "PRD-002#w0",
+            "PRD-001#w0",
+            "SHP-005#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D07",
+          "language": "tr",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 3,
+          "top_3": [
+            "PRD-005#w0",
+            "PRD-001#w0",
+            "POL-008#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D08",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 4,
+          "top_3": [
+            "SHP-003#w0",
+            "WAR-005#w1",
+            "POL-008#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D09",
+          "language": "en",
+          "gold": [
+            "POL-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#w0",
+            "POL-005#w1",
+            "SHP-001#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D10",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 2,
+          "top_3": [
+            "SHP-001#w1",
+            "SHP-003#w1",
+            "POL-004#w2"
+          ],
+          "style": "paraphrase"
+        }
+      ],
+      "seconds": 0.39,
+      "ci95": {
+        "hit_at_5": [
+          0.8448,
+          0.9952
+        ],
+        "mrr": [
+          0.728,
+          0.912
+        ]
+      },
+      "hit_at_5_by_style": {
+        "keyword": {
+          "value": 1.0,
+          "n": 12
+        },
+        "paraphrase": {
+          "value": 1.0,
+          "n": 24
+        },
+        "turkish": {
+          "value": 0.714,
+          "n": 14
+        }
+      }
+    },
+    "hybrid_rerank/section": {
+      "overall": {
+        "n": 50,
+        "hit_at_1": 0.72,
+        "hit_at_3": 0.86,
+        "hit_at_5": 0.92,
+        "hit_at_10": 0.94,
+        "mrr": 0.791
+      },
+      "by_language": {
+        "en": {
+          "n": 36,
+          "hit_at_1": 0.75,
+          "hit_at_3": 0.861,
+          "hit_at_5": 0.944,
+          "hit_at_10": 0.944,
+          "mrr": 0.812
+        },
+        "tr": {
+          "n": 14,
+          "hit_at_1": 0.643,
+          "hit_at_3": 0.857,
+          "hit_at_5": 0.857,
+          "hit_at_10": 0.929,
+          "mrr": 0.736
+        }
+      },
+      "per_question": [
+        {
+          "id": "W3-R01",
+          "language": "en",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-001#§1",
+            "POL-001#§2",
+            "POL-004#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R02",
+          "language": "en",
+          "gold": [
+            "POL-002#§2",
+            "POL-002#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#§6",
+            "POL-002#§2",
+            "POL-002#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R03",
+          "language": "en",
+          "gold": [
+            "POL-002#§4"
+          ],
+          "rank": 3,
+          "top_3": [
+            "POL-002#§1",
+            "POL-002#§5",
+            "POL-002#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R04",
+          "language": "en",
+          "gold": [
+            "POL-003#§2",
+            "POL-003#§6"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-004#§4",
+            "POL-003#§2",
+            "POL-003#§6"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R05",
+          "language": "en",
+          "gold": [
+            "POL-003#§5",
+            "POL-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-003#§6",
+            "POL-003#§3",
+            "POL-003#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R06",
+          "language": "en",
+          "gold": [
+            "POL-004#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#§1",
+            "POL-004#§5",
+            "POL-004#§2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R07",
+          "language": "en",
+          "gold": [
+            "POL-004#§4",
+            "POL-004#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#§6",
+            "POL-004#§4",
+            "POL-001#§6"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R08",
+          "language": "en",
+          "gold": [
+            "POL-005#§3",
+            "POL-005#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#§3",
+            "POL-005#§6",
+            "SHP-002#§2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R09",
+          "language": "en",
+          "gold": [
+            "POL-005#§4"
+          ],
+          "rank": 4,
+          "top_3": [
+            "POL-005#§1",
+            "PRD-009#§5",
+            "POL-001#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R10",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 3,
+          "top_3": [
+            "POL-001#§5",
+            "POL-004#§3",
+            "POL-006#§1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R11",
+          "language": "en",
+          "gold": [
+            "POL-006#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#§2",
+            "POL-006#§5",
+            "POL-004#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R12",
+          "language": "en",
+          "gold": [
+            "POL-007#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#§1",
+            "PRD-004#§4",
+            "PRD-004#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R13",
+          "language": "en",
+          "gold": [
+            "POL-007#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#§3",
+            "POL-001#§1",
+            "WAR-001#§1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R14",
+          "language": "en",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-008#§2",
+            "POL-008#§1",
+            "POL-001#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R15",
+          "language": "en",
+          "gold": [
+            "POL-008#§5"
+          ],
+          "rank": 4,
+          "top_3": [
+            "POL-007#§5",
+            "POL-007#§4",
+            "POL-007#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R16",
+          "language": "en",
+          "gold": [
+            "SHP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#§2",
+            "SHP-002#§2",
+            "SHP-001#§3"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R17",
+          "language": "en",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#§4",
+            "POL-005#§3",
+            "POL-005#§6"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R18",
+          "language": "en",
+          "gold": [
+            "SHP-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-002#§2",
+            "SHP-002#§3",
+            "SHP-002#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R19",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§5",
+            "SHP-001#§6",
+            "SHP-001#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R20",
+          "language": "en",
+          "gold": [
+            "SHP-003#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§4",
+            "SHP-003#§5",
+            "SHP-003#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R21",
+          "language": "en",
+          "gold": [
+            "SHP-004#§2"
+          ],
+          "rank": 3,
+          "top_3": [
+            "SHP-004#§1",
+            "SHP-004#§3",
+            "SHP-004#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R22",
+          "language": "en",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "SHP-001#§2",
+            "SHP-001#§1",
+            "SHP-001#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R23",
+          "language": "en",
+          "gold": [
+            "SOP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#§2",
+            "SOP-001#§3",
+            "SOP-001#§1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R24",
+          "language": "en",
+          "gold": [
+            "SOP-001#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#§5",
+            "SOP-001#§3",
+            "SOP-001#§4"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R25",
+          "language": "en",
+          "gold": [
+            "SOP-002#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-002#§3",
+            "SOP-002#§4",
+            "SOP-002#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R26",
+          "language": "en",
+          "gold": [
+            "WAR-001#§2",
+            "WAR-001#§3"
+          ],
+          "rank": null,
+          "top_3": [
+            "POL-002#§6",
+            "POL-002#§1",
+            "POL-001#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R27",
+          "language": "en",
+          "gold": [
+            "WAR-002#§3",
+            "PRD-007#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-007#§4",
+            "PRD-007#§5",
+            "WAR-002#§5"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R28",
+          "language": "en",
+          "gold": [
+            "WAR-003#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#§3",
+            "WAR-003#§2",
+            "WAR-003#§1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R29",
+          "language": "en",
+          "gold": [
+            "WAR-004#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-004#§3",
+            "POL-004#§6",
+            "PRD-006#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R30",
+          "language": "en",
+          "gold": [
+            "WAR-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-005#§3",
+            "PRD-008#§5",
+            "WAR-005#§2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R31",
+          "language": "en",
+          "gold": [
+            "PRD-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-002#§2",
+            "PRD-002#§4",
+            "PRD-002#§6"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R32",
+          "language": "en",
+          "gold": [
+            "PRD-008#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-008#§4",
+            "PRD-008#§2",
+            "PRD-008#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R33",
+          "language": "en",
+          "gold": [
+            "PRD-010#§2",
+            "PRD-010#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-010#§2",
+            "PRD-010#§5",
+            "PRD-004#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R34",
+          "language": "tr",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 3,
+          "top_3": [
+            "SHP-005#§2",
+            "SHP-002#§2",
+            "SHP-001#§4"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R35",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-005#§2",
+            "SHP-001#§3",
+            "SHP-003#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R36",
+          "language": "tr",
+          "gold": [
+            "POL-002#§1",
+            "POL-002#§6",
+            "POL-001#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#§6",
+            "POL-002#§1",
+            "POL-002#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R37",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2",
+            "SHP-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§6",
+            "SHP-003#§3",
+            "SHP-003#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R38",
+          "language": "tr",
+          "gold": [
+            "POL-007#§4",
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#§4",
+            "POL-007#§2",
+            "POL-007#§1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R39",
+          "language": "tr",
+          "gold": [
+            "PRD-003#§3",
+            "PRD-003#§4",
+            "PRD-009#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-003#§3",
+            "PRD-003#§4",
+            "PRD-003#§6"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R40",
+          "language": "tr",
+          "gold": [
+            "WAR-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#§2",
+            "WAR-003#§3",
+            "WAR-003#§5"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D01",
+          "language": "tr",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-002#§6",
+            "POL-001#§1",
+            "POL-001#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D02",
+          "language": "tr",
+          "gold": [
+            "POL-002#§2"
+          ],
+          "rank": 3,
+          "top_3": [
+            "POL-002#§6",
+            "POL-002#§1",
+            "POL-002#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D03",
+          "language": "tr",
+          "gold": [
+            "POL-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-003#§2",
+            "POL-001#§3",
+            "WAR-004#§2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D04",
+          "language": "tr",
+          "gold": [
+            "POL-004#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#§2",
+            "POL-002#§6",
+            "POL-007#§1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D05",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§2",
+            "SHP-003#§1",
+            "SHP-003#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D06",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 7,
+          "top_3": [
+            "SHP-002#§1",
+            "SHP-001#§1",
+            "SHP-005#§4"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D07",
+          "language": "tr",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": null,
+          "top_3": [
+            "SHP-003#§2",
+            "POL-001#§4",
+            "SHP-003#§3"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D08",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 4,
+          "top_3": [
+            "POL-003#§3",
+            "POL-001#§5",
+            "POL-004#§3"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D09",
+          "language": "en",
+          "gold": [
+            "POL-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#§3",
+            "POL-005#§4",
+            "POL-001#§4"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D10",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#§5",
+            "SHP-001#§5",
+            "POL-001#§1"
+          ],
+          "style": "paraphrase"
+        }
+      ],
+      "seconds": 3.21,
+      "ci95": {
+        "hit_at_5": [
+          0.8448,
+          0.9952
+        ],
+        "mrr": [
+          0.6945,
+          0.8879
+        ]
+      },
+      "hit_at_5_by_style": {
+        "keyword": {
+          "value": 0.917,
+          "n": 12
+        },
+        "paraphrase": {
+          "value": 0.958,
+          "n": 24
+        },
+        "turkish": {
+          "value": 0.857,
+          "n": 14
+        }
+      }
+    },
+    "hybrid_rerank/window": {
+      "overall": {
+        "n": 50,
+        "hit_at_1": 0.76,
+        "hit_at_3": 0.9,
+        "hit_at_5": 0.94,
+        "hit_at_10": 0.98,
+        "mrr": 0.837
+      },
+      "by_language": {
+        "en": {
+          "n": 36,
+          "hit_at_1": 0.806,
+          "hit_at_3": 0.917,
+          "hit_at_5": 0.972,
+          "hit_at_10": 0.972,
+          "mrr": 0.874
+        },
+        "tr": {
+          "n": 14,
+          "hit_at_1": 0.643,
+          "hit_at_3": 0.857,
+          "hit_at_5": 0.857,
+          "hit_at_10": 1.0,
+          "mrr": 0.744
+        }
+      },
+      "per_question": [
+        {
+          "id": "W3-R01",
+          "language": "en",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-001#w0",
+            "POL-001#w1",
+            "POL-001#w2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R02",
+          "language": "en",
+          "gold": [
+            "POL-002#§2",
+            "POL-002#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w3",
+            "POL-002#w0",
+            "WAR-003#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R03",
+          "language": "en",
+          "gold": [
+            "POL-002#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w2",
+            "POL-002#w0",
+            "POL-002#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R04",
+          "language": "en",
+          "gold": [
+            "POL-003#§2",
+            "POL-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-003#w2",
+            "POL-003#w0",
+            "PRD-004#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R05",
+          "language": "en",
+          "gold": [
+            "POL-003#§5",
+            "POL-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-003#w2",
+            "POL-003#w1",
+            "WAR-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R06",
+          "language": "en",
+          "gold": [
+            "POL-004#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#w0",
+            "SOP-001#w0",
+            "POL-004#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R07",
+          "language": "en",
+          "gold": [
+            "POL-004#§4",
+            "POL-004#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#w2",
+            "POL-004#w1",
+            "POL-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R08",
+          "language": "en",
+          "gold": [
+            "POL-005#§3",
+            "POL-005#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#w0",
+            "POL-005#w2",
+            "POL-005#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R09",
+          "language": "en",
+          "gold": [
+            "POL-005#§4"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-009#w1",
+            "POL-005#w0",
+            "POL-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R10",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#w0",
+            "POL-006#w1",
+            "POL-001#w2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R11",
+          "language": "en",
+          "gold": [
+            "POL-006#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-006#w0",
+            "WAR-001#w1",
+            "POL-006#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R12",
+          "language": "en",
+          "gold": [
+            "POL-007#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#w0",
+            "PRD-004#w0",
+            "PRD-004#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R13",
+          "language": "en",
+          "gold": [
+            "POL-007#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#w1",
+            "POL-007#w0",
+            "POL-001#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R14",
+          "language": "en",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-008#w0",
+            "POL-001#w2",
+            "POL-007#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R15",
+          "language": "en",
+          "gold": [
+            "POL-008#§5"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-007#w1",
+            "POL-008#w1",
+            "POL-007#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R16",
+          "language": "en",
+          "gold": [
+            "SHP-001#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "SHP-002#w0",
+            "SHP-001#w0",
+            "POL-001#w2"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R17",
+          "language": "en",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#w0",
+            "SHP-001#w1",
+            "SHP-005#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R18",
+          "language": "en",
+          "gold": [
+            "SHP-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-002#w0",
+            "SHP-001#w0",
+            "POL-005#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R19",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w1",
+            "SHP-004#w0",
+            "SHP-001#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R20",
+          "language": "en",
+          "gold": [
+            "SHP-003#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w1",
+            "SHP-003#w0",
+            "SHP-003#w2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R21",
+          "language": "en",
+          "gold": [
+            "SHP-004#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-004#w0",
+            "SHP-001#w1",
+            "POL-004#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R22",
+          "language": "en",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": null,
+          "top_3": [
+            "SHP-001#w0",
+            "POL-006#w1",
+            "POL-006#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R23",
+          "language": "en",
+          "gold": [
+            "SOP-001#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#w0",
+            "POL-008#w1",
+            "SOP-001#w1"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R24",
+          "language": "en",
+          "gold": [
+            "SOP-001#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-001#w1",
+            "SOP-001#w0",
+            "SOP-002#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R25",
+          "language": "en",
+          "gold": [
+            "SOP-002#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SOP-002#w0",
+            "POL-007#w0",
+            "POL-002#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R26",
+          "language": "en",
+          "gold": [
+            "WAR-001#§2",
+            "WAR-001#§3"
+          ],
+          "rank": 5,
+          "top_3": [
+            "POL-002#w0",
+            "POL-002#w3",
+            "POL-007#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R27",
+          "language": "en",
+          "gold": [
+            "WAR-002#§3",
+            "PRD-007#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-007#w1",
+            "PRD-007#w0",
+            "WAR-002#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R28",
+          "language": "en",
+          "gold": [
+            "WAR-003#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#w0",
+            "WAR-003#w1",
+            "PRD-001#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R29",
+          "language": "en",
+          "gold": [
+            "WAR-004#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-004#w0",
+            "POL-004#w2",
+            "PRD-006#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R30",
+          "language": "en",
+          "gold": [
+            "WAR-005#§3"
+          ],
+          "rank": 2,
+          "top_3": [
+            "PRD-008#w1",
+            "WAR-005#w0",
+            "PRD-008#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R31",
+          "language": "en",
+          "gold": [
+            "PRD-002#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-002#w0",
+            "PRD-002#w1",
+            "PRD-001#w0"
+          ],
+          "style": "keyword"
+        },
+        {
+          "id": "W3-R32",
+          "language": "en",
+          "gold": [
+            "PRD-008#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-008#w0",
+            "PRD-008#w1",
+            "WAR-005#w0"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R33",
+          "language": "en",
+          "gold": [
+            "PRD-010#§2",
+            "PRD-010#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-010#w0",
+            "PRD-004#w0",
+            "PRD-010#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3-R34",
+          "language": "tr",
+          "gold": [
+            "SHP-001#§4"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-001#w1",
+            "SHP-001#w0",
+            "SHP-002#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R35",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-005#w0",
+            "SHP-001#w0",
+            "SHP-003#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R36",
+          "language": "tr",
+          "gold": [
+            "POL-002#§1",
+            "POL-002#§6",
+            "POL-001#§1"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-002#w3",
+            "POL-002#w0",
+            "POL-002#w2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R37",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2",
+            "SHP-003#§6"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w0",
+            "SHP-003#w2",
+            "SHP-003#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R38",
+          "language": "tr",
+          "gold": [
+            "POL-007#§4",
+            "POL-008#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-007#w1",
+            "POL-007#w0",
+            "POL-008#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R39",
+          "language": "tr",
+          "gold": [
+            "PRD-003#§3",
+            "PRD-003#§4",
+            "PRD-009#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "PRD-003#w0",
+            "PRD-003#w1",
+            "PRD-009#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3-R40",
+          "language": "tr",
+          "gold": [
+            "WAR-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "WAR-003#w0",
+            "WAR-003#w1",
+            "WAR-005#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D01",
+          "language": "tr",
+          "gold": [
+            "POL-001#§1"
+          ],
+          "rank": 3,
+          "top_3": [
+            "POL-002#w3",
+            "POL-002#w0",
+            "POL-001#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D02",
+          "language": "tr",
+          "gold": [
+            "POL-002#§2"
+          ],
+          "rank": 2,
+          "top_3": [
+            "POL-002#w3",
+            "POL-002#w0",
+            "POL-002#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D03",
+          "language": "tr",
+          "gold": [
+            "POL-003#§2"
+          ],
+          "rank": 3,
+          "top_3": [
+            "POL-004#w1",
+            "POL-001#w3",
+            "POL-003#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D04",
+          "language": "tr",
+          "gold": [
+            "POL-004#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-004#w0",
+            "POL-002#w2",
+            "PRD-004#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D05",
+          "language": "tr",
+          "gold": [
+            "SHP-003#§2"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w0",
+            "SHP-003#w1",
+            "SHP-003#w2"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D06",
+          "language": "tr",
+          "gold": [
+            "SHP-005#§1"
+          ],
+          "rank": 8,
+          "top_3": [
+            "SHP-002#w0",
+            "SHP-001#w0",
+            "SHP-004#w0"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D07",
+          "language": "tr",
+          "gold": [
+            "POL-008#§2"
+          ],
+          "rank": 8,
+          "top_3": [
+            "SHP-003#w0",
+            "SHP-003#w2",
+            "POL-001#w1"
+          ],
+          "style": "turkish"
+        },
+        {
+          "id": "W3R-D08",
+          "language": "en",
+          "gold": [
+            "POL-006#§1"
+          ],
+          "rank": 4,
+          "top_3": [
+            "POL-003#w1",
+            "POL-003#w2",
+            "POL-006#w1"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D09",
+          "language": "en",
+          "gold": [
+            "POL-005#§3"
+          ],
+          "rank": 1,
+          "top_3": [
+            "POL-005#w1",
+            "POL-005#w0",
+            "POL-005#w2"
+          ],
+          "style": "paraphrase"
+        },
+        {
+          "id": "W3R-D10",
+          "language": "en",
+          "gold": [
+            "SHP-003#§5"
+          ],
+          "rank": 1,
+          "top_3": [
+            "SHP-003#w1",
+            "POL-002#w0",
+            "SHP-001#w0"
+          ],
+          "style": "paraphrase"
+        }
+      ],
+      "seconds": 5.08,
+      "ci95": {
+        "hit_at_5": [
+          0.8742,
+          1.0
+        ],
+        "mrr": [
+          0.7529,
+          0.9218
+        ]
+      },
+      "hit_at_5_by_style": {
+        "keyword": {
+          "value": 0.917,
+          "n": 12
+        },
+        "paraphrase": {
+          "value": 1.0,
+          "n": 24
+        },
+        "turkish": {
+          "value": 0.857,
+          "n": 14
+        }
+      }
+    }
+  },
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "reranker_model": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+  "mcnemar_hit_at_5": [
+    {
+      "b": 15,
+      "c": 1,
+      "chi2": 12.25,
+      "p_chi2": 0.0005,
+      "p_exact": 0.0005,
+      "significant_5pct": true,
+      "system_a": "hybrid_rerank/section",
+      "system_b": "bm25/section",
+      "metric": "hit_at_5",
+      "n": 50,
+      "a_hit_b_miss": 15,
+      "a_miss_b_hit": 1
+    },
+    {
+      "b": 10,
+      "c": 1,
+      "chi2": 7.3636,
+      "p_chi2": 0.0067,
+      "p_exact": 0.0117,
+      "significant_5pct": true,
+      "system_a": "hybrid/section",
+      "system_b": "bm25/section",
+      "metric": "hit_at_5",
+      "n": 50,
+      "a_hit_b_miss": 10,
+      "a_miss_b_hit": 1
+    },
+    {
+      "b": 16,
+      "c": 3,
+      "chi2": 8.8947,
+      "p_chi2": 0.0029,
+      "p_exact": 0.0044,
+      "significant_5pct": true,
+      "system_a": "dense/section",
+      "system_b": "bm25/section",
+      "metric": "hit_at_5",
+      "n": 50,
+      "a_hit_b_miss": 16,
+      "a_miss_b_hit": 3
+    },
+    {
+      "b": 6,
+      "c": 1,
+      "chi2": 3.5714,
+      "p_chi2": 0.0588,
+      "p_exact": 0.125,
+      "significant_5pct": false,
+      "system_a": "hybrid_rerank/section",
+      "system_b": "hybrid/section",
+      "metric": "hit_at_5",
+      "n": 50,
+      "a_hit_b_miss": 6,
+      "a_miss_b_hit": 1
+    },
+    {
+      "b": 0,
+      "c": 1,
+      "chi2": 1.0,
+      "p_chi2": 0.3173,
+      "p_exact": 1.0,
+      "significant_5pct": false,
+      "system_a": "hybrid_rerank/section",
+      "system_b": "hybrid_rerank/window",
+      "metric": "hit_at_5",
+      "n": 50,
+      "a_hit_b_miss": 0,
+      "a_miss_b_hit": 1
+    },
+    {
+      "b": 0,
+      "c": 6,
+      "chi2": 6.0,
+      "p_chi2": 0.0143,
+      "p_exact": 0.0312,
+      "significant_5pct": true,
+      "system_a": "bm25/section",
+      "system_b": "bm25/window",
+      "metric": "hit_at_5",
+      "n": 50,
+      "a_hit_b_miss": 0,
+      "a_miss_b_hit": 6
+    }
+  ],
+  "system_choice": {
+    "mode": "hybrid_rerank",
+    "strategy": "section",
+    "rule": "section-chunk mode with the highest MRR on this set (ties: hit@5)"
+  }
+}

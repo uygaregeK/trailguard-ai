@@ -1,0 +1,21 @@
+{
+  "n": 30,
+  "labels_file": "data/w3_claim_labels_ai_reference.jsonl",
+  "labelers": [
+    "Claude Opus 5.5 (Anthropic), drafted; reviewed and confirmed by Arda Agovic"
+  ],
+  "po": 1.0,
+  "pe": 0.9356,
+  "kappa": 1.0,
+  "confusion": {
+    "human_supported__judge_supported": 29,
+    "human_supported__judge_unsupported": 0,
+    "human_unsupported__judge_supported": 0,
+    "human_unsupported__judge_unsupported": 1
+  },
+  "disagreements": [],
+  "human_unsupported_rate": 0.0333,
+  "judge_unsupported_rate": 0.0333,
+  "skipped_changed_claims": [],
+  "script": "eval/faithfulness_kappa.py"
+}

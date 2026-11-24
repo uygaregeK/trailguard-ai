@@ -17,7 +17,7 @@ Two kinds of test set are read:
 
     python3 eval/eval_retrieval.py                        # BM25, both chunking strategies
     python3 eval/eval_retrieval.py --mode all             # bm25, dense, hybrid, hybrid_rerank
-    python3 eval/eval_retrieval.py --test-set data/w3_retrieval_test_set.jsonl --mode all
+    python3 eval/eval_retrieval.py --test-set data/w3_retrieval_test.jsonl --mode all
     python3 eval/eval_retrieval.py --mode all --out reports/w3_retrieval.json
 """
 
@@ -43,6 +43,20 @@ def load_questions(path):
         if not line.strip():
             continue
         row = json.loads(line)
+        if row.get("gold_passages"):
+            # W3.5 rows may list several acceptable clauses ("POL-002#§2", "POL-002#§6");
+            # a chunk matches if it covers any of them.
+            passages = [tuple(g.split("#", 1)) for g in row["gold_passages"]]
+            questions.append({
+                "id": row["id"],
+                "query": row.get("query") or row["input"],
+                "language": row.get("language", "en"),
+                "style": row.get("style"),
+                "gold_docs": sorted({d for d, _ in passages}),
+                "gold_section": None,
+                "gold_passages": passages,
+            })
+            continue
         if row.get("gold_doc"):
             gold_docs, gold_section = [row["gold_doc"]], row.get("gold_section")
         elif row.get("must_cite"):
@@ -60,6 +74,8 @@ def load_questions(path):
 
 
 def is_match(chunk, question):
+    if question.get("gold_passages"):
+        return any(chunk["doc_id"] == d and s in chunk["sections"] for d, s in question["gold_passages"])
     if chunk["doc_id"] not in question["gold_docs"]:
         return False
     return question["gold_section"] is None or question["gold_section"] in chunk["sections"]
@@ -92,7 +108,8 @@ def evaluate(retriever, questions):
         per_question.append({
             "id": q["id"],
             "language": q["language"],
-            "gold": q["gold_docs"] if q["gold_section"] is None else f"{q['gold_docs'][0]}#{q['gold_section']}",
+            "gold": (["#".join(g) for g in q["gold_passages"]] if q.get("gold_passages")
+                     else q["gold_docs"] if q["gold_section"] is None else f"{q['gold_docs'][0]}#{q['gold_section']}"),
             "rank": rank,
             "top_3": [c["chunk_id"] for c in chunks[:3]],
         })
