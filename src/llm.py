@@ -20,12 +20,13 @@ except ImportError:
 MODEL_PRICING_PER_1M_USD = {
     "gemini-2.5-flash": {"input": 0.30, "output": 2.50},
     "gemini-3.1-flash-lite": {"input": 0.25, "output": 1.50},
+    "gemini-3.5-flash-lite": {"input": 0.25, "output": 1.50},
     "gemini-2.5-flash-lite": {"input": 0.10, "output": 0.40},
     "gemini-3.5-flash": {"input": 1.50, "output": 9.00},
 }
 
 DEFAULT_MODEL = "gemini-3.1-flash-lite"
-FALLBACK_MODELS = ["gemini-3.1-flash-lite", "gemini-2.5-flash-lite", "gemini-2.5-flash"]
+FALLBACK_MODELS = ["gemini-3.1-flash-lite", "gemini-3.5-flash-lite", "gemini-2.5-flash"]
 
 
 def get_model_pricing(model_name: str) -> dict:
@@ -149,7 +150,7 @@ def call_llm(
                 }
             except APIError as err:
                 last_err = err
-                if err.code in (429, 503):
+                if err.code in (429, 503) or (err.code == 404 and len(candidates) > 1):
                     continue
                 raise
         time.sleep(4 * (attempt + 1))

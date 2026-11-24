@@ -1,12 +1,12 @@
-"""W3.4 — Grounded RAG Generation Chain with Numbered Citations & Abstention.
+"""W3.4 — Grounded RAG Generation Chain with Numbered Citations & Bilingual Abstention.
 
 Connects Dilara's HybridRetriever (`src/retriever.py`) with `prompts/v3_rag.txt`
 and `src/llm.py` (`call_llm` at temperature=0.0), enforcing:
   - Strict separation of `access_level: public` passages (`[1]..[N]`) from
     `access_level: internal` SOP guidance (never quoted or cited).
   - Post-generation validation of inline `[1]`, `[2]` citations with automatic retry.
-  - Safe abstention using `FIXED_ABSTENTION_RESPONSE` on empty/low-confidence
-    retrieval or persistent citation validation failure (never fabricating `[1]`).
+  - Safe C2/C5-compliant bilingual abstention (no fabricated escalation tool claim,
+    matched to English or Turkish customer query language).
 """
 
 from __future__ import annotations
@@ -27,12 +27,86 @@ from src.llm import call_llm
 
 RAG_PROMPT_PATH = _ROOT_DIR / "prompts" / "v3_rag.txt"
 
-FIXED_ABSTENTION_RESPONSE = (
-    "I cannot answer this from TrailRun TR's official policy and catalog documents. "
-    "I am escalating your request to a human specialist."
+FIXED_ABSTENTION_RESPONSE_EN = (
+    "I cannot answer this from TrailRun TR's official policy and catalog documents."
 )
 
+FIXED_ABSTENTION_RESPONSE_TR = (
+    "TrailRun TR'nin resmi politika ve katalog belgelerinden bu soruya yanıt veremiyorum."
+)
+
+FIXED_ABSTENTION_RESPONSE = FIXED_ABSTENTION_RESPONSE_EN
+
+FIXED_ABSTENTION_RESPONSES: dict[str, str] = {
+    "en": FIXED_ABSTENTION_RESPONSE_EN,
+    "tr": FIXED_ABSTENTION_RESPONSE_TR,
+}
+
 CITATION_PATTERN = re.compile(r"\[(\d+)\]")
+
+_TR_DIACRITICS = set("çğıöşü")
+
+_TR_TOKENS = {
+    "merhaba", "selam", "iade", "siparis", "sipariş", "kargo", "kargom",
+    "paket", "paketin", "urun", "ürün", "beden", "numara", "numaram",
+    "degisim", "değişim", "degisimi", "değişimi", "evde", "sadece",
+    "nerede", "oldugunu", "olduğunu", "kontrol", "teslim", "eger", "eğer",
+    "icin", "için", "garanti", "edebilir", "miyim", "misiniz", "mı", "mi",
+    "mu", "mü", "lutfen", "lütfen", "tesekkurler", "teşekkürler", "nasil",
+    "nasıl", "zaman", "kac", "kaç", "gun", "gün", "var", "yok", "bu", "ve",
+    "ile", "bir", "fiyat", "stok", "ucret", "ücret", "ayakkabi", "ayakkabı",
+    "ceket", "yelek", "baslatabilir", "başlatabilir", "denedim", "yagmur",
+    "yağmur", "yagacak", "yağacak", "pazar", "ne", "kadar", "surer", "sürer",
+    "hangisi", "daha", "uygun", "durumu", "nerde",
+}
+
+_EN_TOKENS = {
+    "the", "is", "are", "was", "were", "will", "can", "do", "does", "did",
+    "have", "has", "my", "your", "it", "at", "on", "in", "for", "with",
+    "from", "this", "that", "what", "where", "when", "how", "why", "which",
+    "and", "not", "they", "them", "could", "would", "should", "please",
+}
+
+
+def detect_query_language(query: str) -> str:
+    """Detect whether `query` is Turkish (`'tr'`) or English (`'en'`).
+
+    Handles ASCII-typed Turkish without diacritics (e.g., W2-D16, W2-A14) while
+    avoiding false positives on English queries containing a Turkish place name
+    diacritic (e.g., 'Uludağ' in W2-D22).
+    """
+    normalized = query.replace("İ", "i").lower().replace("\u0307", "")
+    tokens = re.findall(r"[a-zçğıöşü]+", normalized)
+    tr_hits = sum(1 for tok in tokens if tok in _TR_TOKENS)
+    en_hits = sum(1 for tok in tokens if tok in _EN_TOKENS)
+    has_tr_diacritic = any(ch in _TR_DIACRITICS for ch in normalized)
+
+    if (
+        (tr_hits >= 2 and tr_hits >= en_hits)
+        or (tr_hits >= 1 and en_hits == 0)
+        or (en_hits == 0 and has_tr_diacritic)
+    ):
+        return "tr"
+    return "en"
+
+
+def get_abstention_response(
+    query: str | None = None,
+    *,
+    language: str | None = None,
+) -> str:
+    """Return the fixed C2/C5-compliant abstention sentence for `'en'` or `'tr'`."""
+    lang = (
+        language
+        if language in FIXED_ABSTENTION_RESPONSES
+        else detect_query_language(query or "")
+    )
+    return FIXED_ABSTENTION_RESPONSES[lang]
+
+
+def is_abstention_response(text: str) -> bool:
+    """Return True if `text` matches either bilingual fixed abstention response."""
+    return text.strip() in FIXED_ABSTENTION_RESPONSES.values()
 
 
 def load_rag_system_prompt(prompt_path: Path = RAG_PROMPT_PATH) -> str:
@@ -110,7 +184,7 @@ def validate_citations(
 ) -> tuple[bool, list[int], list[str]]:
     """Validate inline `[n]` citations (and ensure no internal doc IDs leak)."""
     stripped = text.strip()
-    if stripped == FIXED_ABSTENTION_RESPONSE:
+    if is_abstention_response(stripped):
         return True, [], []
 
     citations = extract_citation_numbers(stripped)
@@ -163,6 +237,7 @@ def _build_cited_passages(
 def _abstain_result(
     *,
     reason: str,
+    language: str = "en",
     citation_validation_failed: bool = False,
     validation_errors: list[str] | None = None,
     cost_usd: float = 0.0,
@@ -173,9 +248,10 @@ def _abstain_result(
     num_public_passages: int = 0,
     num_internal_passages: int = 0,
 ) -> dict[str, Any]:
-    """Build a uniform abstention response dictionary."""
+    """Build a uniform bilingual abstention response dictionary."""
     return {
-        "answer": FIXED_ABSTENTION_RESPONSE,
+        "answer": get_abstention_response(language=language),
+        "language": language,
         "abstained": True,
         "abstention_reason": reason,
         "citations": [],
@@ -196,6 +272,7 @@ def generate_rag_answer(
     query: str,
     retrieved_passages: list[dict[str, Any]],
     *,
+    language: str | None = None,
     min_score_threshold: float | None = None,
     max_retries: int = 1,
     temperature: float = 0.0,
@@ -203,11 +280,17 @@ def generate_rag_answer(
     system_prompt: str | None = None,
 ) -> dict[str, Any]:
     """Generate a citation-verified RAG answer from retrieved passages."""
+    lang = (
+        language
+        if language in FIXED_ABSTENTION_RESPONSES
+        else detect_query_language(query)
+    )
     public_passages, internal_passages = split_passages_by_access(retrieved_passages)
 
     if not public_passages:
         return _abstain_result(
             reason="no_public_passages",
+            language=lang,
             num_public_passages=0,
             num_internal_passages=len(internal_passages),
         )
@@ -217,6 +300,7 @@ def generate_rag_answer(
         if top_score < min_score_threshold:
             return _abstain_result(
                 reason=f"low_top_score ({top_score:.4f} < {min_score_threshold:.4f})",
+                language=lang,
                 num_public_passages=len(public_passages),
                 num_internal_passages=len(internal_passages),
             )
@@ -227,6 +311,7 @@ def generate_rag_answer(
         offline_answer = f"{first_line} [1]".strip()
         return {
             "answer": offline_answer,
+            "language": lang,
             "abstained": False,
             "abstention_reason": None,
             "citations": [1],
@@ -264,6 +349,7 @@ def generate_rag_answer(
     total_tokens = 0
     last_model: str | None = None
     last_errors: list[str] = []
+    expected_abstention = get_abstention_response(language=lang)
 
     for attempt in range(max_retries + 1):
         res = call_llm(
@@ -277,9 +363,10 @@ def generate_rag_answer(
         last_model = res.get("model")
         output_text = str(res.get("output_text", "")).strip()
 
-        if output_text == FIXED_ABSTENTION_RESPONSE:
+        if is_abstention_response(output_text):
             return _abstain_result(
                 reason="insufficient_evidence",
+                language=lang,
                 citation_validation_failed=False,
                 cost_usd=total_cost_usd,
                 latency_s=total_latency_s,
@@ -298,6 +385,7 @@ def generate_rag_answer(
         if is_valid:
             return {
                 "answer": output_text,
+                "language": lang,
                 "abstained": False,
                 "abstention_reason": None,
                 "citations": citations,
@@ -318,11 +406,12 @@ def generate_rag_answer(
             f"{base_user_message}\n\n"
             f"Your previous draft failed validation: {errors}. "
             f"Rewrite using ONLY inline citations [1]..[{len(public_passages)}] from `<public_passages>`, "
-            f"never mention internal guidance, or reply with ONLY the exact abstention sentence."
+            f"never mention internal guidance, or reply with ONLY: {expected_abstention}"
         )
 
     return _abstain_result(
         reason="citation_validation_failed",
+        language=lang,
         citation_validation_failed=True,
         validation_errors=last_errors,
         cost_usd=total_cost_usd,
@@ -346,6 +435,7 @@ def answer_with_rag(
     include_internal: bool = False,
     allowed_access: tuple[str, ...] | None = None,
     retriever: Any = None,
+    language: str | None = None,
     min_score_threshold: float | None = None,
     max_retries: int = 1,
     temperature: float = 0.0,
@@ -372,6 +462,7 @@ def answer_with_rag(
     result = generate_rag_answer(
         query=query,
         retrieved_passages=passages,
+        language=language,
         min_score_threshold=min_score_threshold,
         max_retries=max_retries,
         temperature=temperature,
