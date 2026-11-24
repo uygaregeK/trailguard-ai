@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import sys
 import time
 
 try:
@@ -60,9 +61,16 @@ def call_llm(
     """Call Google Gemini API (default high-quota Free Tier primary: gemini-3.1-flash-lite;
     fallback order: gemini-2.5-flash-lite, then gemini-2.5-flash with thinking_budget=0).
     """
-    from google import genai
-    from google.genai import types
-    from google.genai.errors import APIError
+    try:
+        from google import genai
+        from google.genai import types
+        from google.genai.errors import APIError
+    except ImportError as exc:
+        raise ImportError(
+            f"Missing 'google-genai' in active Python ({sys.executable}). "
+            "Activate the virtual/conda environment where you ran "
+            "'pip install -r requirements.txt' (or run `pip install -r requirements.txt`) and retry."
+        ) from exc
 
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:

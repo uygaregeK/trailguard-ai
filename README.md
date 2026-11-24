@@ -30,6 +30,20 @@ python3 eval/run_w1_baseline.py
 python3 eval/run_w1_baseline.py --recompute
 ```
 
+> **Environment Note:** Always run live commands from the **activated virtual or conda environment** (e.g., `.venv` or conda `(base)`) where `pip install -r requirements.txt` was executed so the active `python` interpreter has `google-genai`. Offline flags (`--offline`, deterministic fallback) run without `google-genai` or an API key.
+
+### Week 2 & Week 3 Quick Checks
+
+```bash
+# Week 2 request classifier (offline deterministic check / live Gemini API check)
+python -m src.classifier
+python -m src.classifier --live
+
+# Week 3 grounded RAG chain (offline retrieval + formatting check / live Gemini check)
+python -m src.rag_chain --offline
+python -m src.rag_chain
+```
+
 ---
 
 ## Repository Structure
