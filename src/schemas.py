@@ -1,8 +1,8 @@
 """W2.1 — Request Classifier JSON Schema & Deterministic Validation.
 
 Defines the strict JSON schema required by Week 2 Deliverable W2.1:
-  - intent: One of the canonical TrailRun TR support intents
-  - entities: Extracted exact store identifiers (order_id, sku, tracking_number, rma_id)
+  - intent: One of the canonical 5 TrailRun TR support intents
+  - entities: Extracted exact store identifiers (order_id, sku, tracking, rma)
   - urgency: One of "low", "medium", "high"
 """
 
@@ -12,20 +12,33 @@ import re
 from typing import Any
 
 VALID_INTENTS = {
-    "policy_question",
-    "order_lookup",
-    "return_request",
-    "product_comparison",
-    "unanswerable_out_of_scope",
-    "adversarial_override",
+    "return",
+    "order_status",
+    "product_question",
+    "complaint",
+    "other",
 }
 
 VALID_URGENCIES = {"low", "medium", "high"}
+
+ENTITY_KEYS = ("order_id", "sku", "tracking", "rma")
 
 ORDER_ID_RE = re.compile(r"^ORD-\d{4}-\d{4,}$")
 SKU_RE = re.compile(r"^SKU-[A-Z0-9-]+$")
 TRACKING_RE = re.compile(r"^TRK-[A-Z0-9-]+$")
 RMA_RE = re.compile(r"^RMA-\d{4}-\d{3,}$")
+
+_ENTITY_PATTERNS: dict[str, tuple[re.Pattern[str], str]] = {
+    "order_id": (ORDER_ID_RE, "ORD-YYYY-XXXX"),
+    "sku": (SKU_RE, "SKU-..."),
+    "tracking": (TRACKING_RE, "TRK-..."),
+    "rma": (RMA_RE, "RMA-YYYY-XXX"),
+}
+
+_ENTITY_PROP_SCHEMA: dict[str, Any] = {
+    "type": ["string", "array", "null"],
+    "items": {"type": "string"},
+}
 
 CLASSIFIER_JSON_SCHEMA: dict[str, Any] = {
     "type": "object",
@@ -38,13 +51,8 @@ CLASSIFIER_JSON_SCHEMA: dict[str, Any] = {
         },
         "entities": {
             "type": "object",
-            "required": ["order_id", "sku", "tracking_number", "rma_id"],
-            "properties": {
-                "order_id": {"type": ["string", "null"]},
-                "sku": {"type": ["string", "null"]},
-                "tracking_number": {"type": ["string", "null"]},
-                "rma_id": {"type": ["string", "null"]},
-            },
+            "required": list(ENTITY_KEYS),
+            "properties": {key: _ENTITY_PROP_SCHEMA for key in ENTITY_KEYS},
         },
         "urgency": {
             "type": "string",
@@ -53,6 +61,30 @@ CLASSIFIER_JSON_SCHEMA: dict[str, Any] = {
         },
     },
 }
+
+
+def _validate_entity_value(ent_key: str, value: Any) -> list[str]:
+    """Validate a single entity field: null, matching string, or non-empty list of matching strings."""
+    if value is None:
+        return []
+    pattern, expected_fmt = _ENTITY_PATTERNS[ent_key]
+    if isinstance(value, str):
+        if not pattern.match(value):
+            return [f"Invalid {ent_key} format: '{value}' (expected {expected_fmt})."]
+        return []
+    if isinstance(value, list):
+        if not value:
+            return [f"Invalid {ent_key}: empty list is not allowed; use null instead."]
+        errors: list[str] = []
+        for idx, item in enumerate(value):
+            if not isinstance(item, str) or not pattern.match(item):
+                errors.append(
+                    f"Invalid {ent_key}[{idx}] format: '{item}' (expected {expected_fmt})."
+                )
+        return errors
+    return [
+        f"Invalid {ent_key} type: expected string, non-empty list of strings, or null."
+    ]
 
 
 def validate_classification_payload(payload: dict[str, Any]) -> tuple[bool, list[str]]:
@@ -85,25 +117,14 @@ def validate_classification_payload(payload: dict[str, Any]) -> tuple[bool, list
     if not isinstance(entities, dict):
         errors.append("'entities' must be a JSON object.")
     else:
-        for ent_key in ("order_id", "sku", "tracking_number", "rma_id"):
+        for ent_key in ENTITY_KEYS:
             if ent_key not in entities:
                 errors.append(f"Missing required entity key: 'entities.{ent_key}'.")
+            else:
+                errors.extend(_validate_entity_value(ent_key, entities.get(ent_key)))
 
-        order_id = entities.get("order_id")
-        if order_id is not None and not ORDER_ID_RE.match(str(order_id)):
-            errors.append(f"Invalid order_id format: '{order_id}' (expected ORD-YYYY-XXXX).")
-
-        sku = entities.get("sku")
-        if sku is not None and not SKU_RE.match(str(sku)):
-            errors.append(f"Invalid sku format: '{sku}' (expected SKU-...).")
-
-        trk = entities.get("tracking_number")
-        if trk is not None and not TRACKING_RE.match(str(trk)):
-            errors.append(f"Invalid tracking_number format: '{trk}' (expected TRK-...).")
-
-        rma = entities.get("rma_id")
-        if rma is not None and not RMA_RE.match(str(rma)):
-            errors.append(f"Invalid rma_id format: '{rma}' (expected RMA-YYYY-XXX).")
+        extra_keys = sorted(set(entities.keys()) - set(ENTITY_KEYS))
+        if extra_keys:
+            errors.append(f"Unexpected entity keys: {extra_keys}. Allowed: {list(ENTITY_KEYS)}.")
 
     return len(errors) == 0, errors
-
