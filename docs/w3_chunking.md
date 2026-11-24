@@ -31,3 +31,22 @@ Some clauses are short (14 words minimum), and a few answers need two neighbouri
 ## How we will test the choice (W3.7)
 
 The retrieval test set (W3.5) marks the gold document and clause for each question. One ablation changes **only** the chunking strategy (section vs window) and reports hit@1, 3, 5, 10 and MRR for both. A hit counts when a retrieved chunk is from the gold document and covers the gold clause, so both strategies are scored the same way.
+
+## First measurement (W2 test set, document level)
+
+Until the W3.5 set is ready, we scored both strategies on the 23 questions of `data/w2_test_set.jsonl` that have a `must_cite` list. A hit here means a retrieved chunk comes from one of the `must_cite` documents (document level, not clause level). Reproduce with:
+
+```bash
+python eval/eval_retrieval.py --mode all --show-misses
+```
+
+| Retriever | Chunking | hit@1 | hit@3 | hit@5 | hit@10 | MRR |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| BM25 | **section** | **0.739** | **0.870** | **0.913** | 0.913 | **0.813** |
+| BM25 | window | 0.696 | 0.826 | 0.870 | 0.957 | 0.769 |
+| Hybrid + reranker | **section** | 0.696 | 0.783 | 0.913 | 0.957 | 0.770 |
+| Hybrid + reranker | window | 0.652 | 0.870 | 0.957 | 1.000 | 0.768 |
+
+With BM25, section chunks rank the right document higher (MRR 0.813 vs 0.769): a clause-sized chunk is short and about one rule, so its key terms carry more weight than in a 120-word window that mixes several rules. Windows catch more at k = 10, because each window covers more text. With the hybrid retriever and reranker, the two strategies are close (MRR 0.770 vs 0.768).
+
+**Limits:** n = 23, so one question moves a hit rate by about 0.04, and most differences above are one or two questions. Only 1 of the 23 questions is in Turkish, and most were written with the documents' own words, which favours BM25. We keep section chunking as the main choice for the reasons above (whole rules, clause citations) and repeat this comparison on the W3.5 set, which adds Turkish and paraphrased questions and gold clauses.
