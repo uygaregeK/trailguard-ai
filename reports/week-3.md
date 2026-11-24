@@ -156,8 +156,12 @@ This week's evaluation supports the same direction from the other side: the agen
 |---|---|
 | **Anthropic Claude**, **ChatGPT** (Arda) | Code development, debugging, technical research and documentation. Claude drafted `eval/run_w3_rag.py`, judge version 3, `src/faithfulness.py`, `eval/label_claims.py`, `eval/faithfulness_kappa.py`, the 40 retrieval questions with gold clauses and expected answers, the failure grouping and this report; Claude also drafted the 30 reference labels for the faithfulness check, which Arda reviewed and confirmed (Experiment 4). Arda ran the evaluation on his machine. |
 | **Anthropic Claude**, **ChatGPT** (Uygar) | Technical research, code optimization and comparing alternative solutions for `src/rag_chain.py`, the classifier fix and the model fallback chain. |
-| **ChatGPT** (Dilara) | Drafting questions (the 10 retrieval questions were written with AI help and checked one by one by Dilara, R15), prompt development and editing content. |
+| **Anthropic Claude** (Dilara) | Drafted the 32 corpus documents, `src/chunker.py`, `src/retriever.py` and `eval/eval_retrieval.py`, the chunking and interview docs, the 10 retrieval questions and the slides; Dilara reviewed everything, ran all code and measurements on her machine, and ran the two interviews herself; the write-up was drafted from her notes. |
 | **Google Gemini API** (`gemini-3.5-flash-lite`, `gemini-2.5-flash`, `gemini-3.1-flash-lite`) | 85 RAG answers (plus 5 citation retries), 130 C1–C5 judge calls (85 RAG answers + 45 re-graded Week 2 answers), 52 claim-judge calls. Retrieval used local models only. |
+
+---
+
+**Correction after the `week-3` tag (24 November):** Dilara's row was corrected from ChatGPT to Anthropic Claude, with the full list of what the tool drafted. No other content changed; the tagged commit is `ce5d979`.
 
 ---
 
