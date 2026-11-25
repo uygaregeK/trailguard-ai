@@ -12,9 +12,11 @@ Run from the repository root:
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import importlib.util
 import json
+import os
 from pathlib import Path
 import socket
 import sys
@@ -27,6 +29,11 @@ SRC_DIR = ROOT_DIR / "src"
 for _p in (str(ROOT_DIR), str(SRC_DIR)):
     if _p not in sys.path:
         sys.path.insert(0, _p)
+
+# Force the fast, responsive demo model before src.llm loads .env (where load_dotenv
+# preserves already-set env vars; avoids 2+ min stalls on overloaded gemini-3.1-flash-lite).
+os.environ.setdefault("DEMO_GEMINI_MODEL", "gemini-2.5-flash")
+os.environ["GEMINI_MODEL"] = os.environ["DEMO_GEMINI_MODEL"]
 
 from src.rag_chain import (
     answer_with_rag,
@@ -164,6 +171,18 @@ def _format_sources(
     return sources
 
 
+def _run_with_timeout(fn: Any, timeout_s: float = 12.0) -> Any:
+    """Execute `fn()` with a hard wall-clock timeout without waiting on hung threads."""
+    pool = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+    future = pool.submit(fn)
+    try:
+        return future.result(timeout=timeout_s)
+    except concurrent.futures.TimeoutError as exc:
+        raise TimeoutError(f"Model request exceeded {timeout_s:.0f}s") from exc
+    finally:
+        pool.shutdown(wait=False, cancel_futures=True)
+
+
 def handle_chat_message(payload: dict[str, Any]) -> dict[str, Any]:
     """Process one support question cleanly and return grounded answer + cited sources."""
     query = str(payload.get("query") or "").strip()
@@ -172,9 +191,13 @@ def handle_chat_message(payload: dict[str, Any]) -> dict[str, Any]:
 
     case_id = str(payload.get("case_id") or "").strip()
     use_llm = bool(payload.get("use_llm", True))
+    timeout_s = float(payload.get("timeout_s") or 12.0)
 
     retriever = _get_live_retriever()
     saved_row = _W3_OUTPUTS_BY_ID.get(case_id) or _W3_OUTPUTS_BY_QUERY.get(_norm_q(query))
+
+    # Ensure demo model override remains active when calling Gemini.
+    os.environ["GEMINI_MODEL"] = os.environ.get("DEMO_GEMINI_MODEL", "gemini-2.5-flash")
 
     # For saved benchmark questions when local dense embeddings are absent or fell back,
     # run live Gemini generation over the saved multilingual `hybrid_rerank/section`
@@ -191,10 +214,9 @@ def handle_chat_message(payload: dict[str, Any]) -> dict[str, Any]:
             for p in saved_row.get("passages", [])
         ]
         try:
-            rag_res = generate_rag_answer(
-                query,
-                passages_for_rag,
-                use_llm=use_llm,
+            rag_res = _run_with_timeout(
+                lambda: generate_rag_answer(query, passages_for_rag, use_llm=use_llm),
+                timeout_s=timeout_s,
             )
             citations = rag_res.get("citations") or []
             return {
@@ -226,13 +248,16 @@ def handle_chat_message(payload: dict[str, Any]) -> dict[str, Any]:
 
     # Live path for any custom typed question (or full hybrid_rerank when active).
     try:
-        rag_res = answer_with_rag(
-            query,
-            k=5,
-            strategy="section",
-            retriever=retriever,
-            include_internal=False,
-            use_llm=use_llm,
+        rag_res = _run_with_timeout(
+            lambda: answer_with_rag(
+                query,
+                k=5,
+                strategy="section",
+                retriever=retriever,
+                include_internal=False,
+                use_llm=use_llm,
+            ),
+            timeout_s=timeout_s,
         )
         pub_passages, _ = split_passages_by_access(rag_res.get("retrieved_passages", []))
         citations = rag_res.get("citations") or []
@@ -795,6 +820,7 @@ def main() -> None:
 
     print("Loading TrailGuard AI retriever (hybrid_rerank / bm25)...")
     ret = _get_live_retriever()
+    ret.search("warmup", k=1)
 
     server = ThreadingHTTPServer((args.host, args.port), SupportUIHandler)
     local_host = "127.0.0.1" if args.host == "0.0.0.0" else args.host
